@@ -87,6 +87,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def _answer(self):
         Handler.seen_headers = dict(self.headers)
+        # Body vollstaendig lesen: schliesst der Server mit ungelesenen Daten,
+        # schickt macOS ein RST und der Client sieht "Connection reset by peer".
+        self.rfile.read(int(self.headers.get("Content-Length") or 0))
         status, body, headers = SCENARIOS[self.path.split("?")[0]]
         raw = json.dumps(body).encode()
         self.send_response(status)
