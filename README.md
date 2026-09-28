@@ -101,14 +101,9 @@ python tools/build_reference.py    # regenerate the reference from the live API 
 
 `tools/build_reference.py` also fails if `SKILL.md` mentions an endpoint that does not exist. A weekly workflow flags when the reference no longer matches the live API.
 
-## About rechner-hub.de
+## Background
 
-The skill is a thin layer over [rechner-hub.de](https://rechner-hub.de/), a German site with more than 100 free tax, salary and social benefit calculators. Each calculator cites the statute it implements, and the values are checked against primary sources (gesetze-im-internet.de, Bundesgesetzblatt, BMF).
-
-- **Calculate in the browser, without a key:** [Brutto-Netto](https://rechner-hub.de/brutto-netto/), [Abfindung](https://rechner-hub.de/abfindungsrechner/), [Einkommensteuer](https://rechner-hub.de/einkommensteuer-rechner/), [Minijob](https://rechner-hub.de/minijob-rechner/) and [all calculators](https://rechner-hub.de/)
-- **Use the API in your own code:** [rechner-hub.de/steuerrechner-api](https://rechner-hub.de/steuerrechner-api/) (docs, examples, changelog)
-- **Subscribe and get a key:** [German Tax Calculator on RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator)
-- **Only need income tax, offline?** [`lohnsteuer-bmf`](https://github.com/L1nch-lab/lohnsteuer-bmf) implements the BMF Programmablaufplan as a Python package with zero dependencies.
+The calculations come from the [rechner-hub.de API](https://rechner-hub.de/steuerrechner-api/). The same calculators are available in the browser on [rechner-hub.de](https://rechner-hub.de/). For income tax only, without an API, see [`lohnsteuer-bmf`](https://github.com/L1nch-lab/lohnsteuer-bmf).
 
 ## Disclaimer
 
