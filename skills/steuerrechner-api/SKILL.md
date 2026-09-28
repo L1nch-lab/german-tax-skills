@@ -22,6 +22,8 @@ Reply in the user's language. Field names and API responses are German.
 
 ## Workflow
 
+The commands below call `scripts/call.py` inside this skill's folder. Claude Code fills in `${CLAUDE_SKILL_DIR}` by itself. In any other agent (Codex, Cursor, Copilot, Gemini CLI and others), replace `${CLAUDE_SKILL_DIR}` with the absolute path of the folder that contains this `SKILL.md`, because the shell would otherwise expand it to an empty string.
+
 ### 1. Check the key
 
 ```bash
