@@ -5,7 +5,7 @@
 **German taxes, social security contributions and social benefits for AI agents: calculated by the [rechner-hub.de API](https://rechner-hub.de/steuerrechner-api/), not guessed by the model.**
 
 [![RapidAPI](https://img.shields.io/badge/RapidAPI-German%20Tax%20Calculator-0055DA.svg)](https://rapidapi.com/rechnerhub/api/german-tax-calculator)
-[![skills.sh](https://skills.sh/b/L1nch-lab/german-tax-skills)](https://skills.sh/)
+[![skills.sh](https://skills.sh/b/L1nch-lab/german-tax-skills)](https://skills.sh/L1nch-lab/german-tax-skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/L1nch-lab/german-tax-skills/blob/main/LICENSE)
 [![CI](https://github.com/L1nch-lab/german-tax-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/L1nch-lab/german-tax-skills/actions/workflows/ci.yml)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
