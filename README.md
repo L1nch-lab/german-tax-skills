@@ -1,19 +1,68 @@
 <div align="center">
 
-# german-tax-skills
+<img src="https://raw.githubusercontent.com/L1nch-lab/german-tax-skills/main/assets/banner.svg" alt="german-tax-skills" width="100%">
 
-**Agent skills that calculate German taxes, social security contributions and social benefits through the [rechner-hub.de API](https://rechner-hub.de/steuerrechner-api/) instead of letting the model guess.**
+**German taxes, social security contributions and social benefits for AI agents: calculated by the [rechner-hub.de API](https://rechner-hub.de/steuerrechner-api/), not guessed by the model.**
 
 [![RapidAPI](https://img.shields.io/badge/RapidAPI-German%20Tax%20Calculator-0055DA.svg)](https://rapidapi.com/rechnerhub/api/german-tax-calculator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/L1nch-lab/german-tax-skills/blob/main/LICENSE)
 [![CI](https://github.com/L1nch-lab/german-tax-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/L1nch-lab/german-tax-skills/actions/workflows/ci.yml)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://github.com/L1nch-lab/german-tax-skills/blob/main/pyproject.toml)
 
-[Install](#install) · [Get an API key on RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) · [API docs](https://rechner-hub.de/steuerrechner-api/) · [rechner-hub.de](https://rechner-hub.de/)
+[Install](#install) · [Quickstart](#quickstart) · [Get an API key on RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) · [API docs](https://rechner-hub.de/steuerrechner-api/)
 
 </div>
 
-Ask Claude Code *"How much net do I keep from 4,200 € gross, tax class 1, Bavaria?"* and the skill picks the right endpoint, asks for missing required inputs, calls the API and reports the result together with the assumptions it used. It never estimates a tax figure itself.
+# german-tax-skills
+
+- 🧮 **120 endpoints**: payroll, income and capital taxes, property, social benefits, reference data
+- 🚫 **No guessing**: the agent never estimates a tax figure, it calls the API or says it can't
+- 🔑 **Key stays local**: read from `.env` or the environment, masked in every output, never asked for in the chat
+- 📉 **Quota-aware**: warns before your RapidAPI plan runs out and stops cleanly when it has
+- 🪶 **Zero dependencies**: Python standard library only
+- 🐍 **Python 3.10 – 3.14**: tested on Linux, Windows and macOS
+
+> 🇩🇪 **Deutsch:** weiter unten gibt es eine [Kurzfassung auf Deutsch](#deutsch).
+
+---
+
+## Quickstart
+
+After [installing](#install) and [setting your key](#set-your-api-key), just ask:
+
+> *My employer can spend 6,000 € a month on me in total. What gross salary is that, and how much do I keep? Tax class 1, North Rhine-Westphalia.*
+
+The skill reads the endpoint reference, then runs:
+
+```bash
+python3 scripts/call.py POST v1/lohnkosten-netto   '{"lohnkosten_ziel": 6000, "steuerklasse": 1, "bundesland": "Nordrhein-Westfalen"}'
+```
+
+and gets back (real response, shortened):
+
+```json
+{
+  "success": true,
+  "data": {
+    "brutto_monat": "4888.38",
+    "netto_monat": "3072.91",
+    "lohnsteuer_monat": "752.25",
+    "soli_monat": "0.0",
+    "sv_gesamt_monat": "1063.22",
+    "ag_gesamt": "1111.62"
+  },
+  "input_echo": {
+    "kirchensteuer": false,
+    "kinder": 0,
+    "geburtsjahr": 1985,
+    "kv_zusatzbeitrag": "2.9"
+  },
+  "meta": { "tax_year": 2026 }
+}
+```
+
+The answer leads with the numbers: 6,000 € of employer costs mean 4,888.38 € gross and 3,072.91 € net, after 752.25 € income tax and 1,063.22 € social security. It also says which defaults it assumed (no church tax, no children, born 1985, average health insurance surcharge of 2.9 %), because each of them changes the result, and it mentions the tax year.
 
 ## What it covers
 
@@ -108,6 +157,16 @@ The calculations come from the [rechner-hub.de API](https://rechner-hub.de/steue
 ## Disclaimer
 
 The results are calculations based on current German law, not tax advice. Provided as is, without warranty.
+
+## Deutsch
+
+Agent-Skill für deutsche Steuern, Sozialabgaben und Sozialleistungen. Claude Code und andere Agenten rechnen damit nicht selbst, sondern fragen die [Steuerrechner-API von rechner-hub.de](https://rechner-hub.de/steuerrechner-api/) ab: 120 Endpoints von Brutto-Netto über Abfindung und Elterngeld bis zu den Hebesätzen deiner Gemeinde.
+
+- **Installieren:** `/plugin marketplace add L1nch-lab/german-tax-skills`, dann `/plugin install german-tax-skills@l1nch-lab`
+- **Key:** [German Tax Calculator auf RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) abonnieren (Basic mit 50 Anfragen am Tag ist kostenlos) und `RAPIDAPI_KEY=...` in die `.env` im Projektordner schreiben
+- **Ohne Key im Browser rechnen:** [rechner-hub.de](https://rechner-hub.de/)
+
+Die Ergebnisse sind Berechnungen, keine Steuerberatung.
 
 ## License
 
