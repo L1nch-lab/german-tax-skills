@@ -142,7 +142,7 @@ The rules that matter most:
 ## Development
 
 ```bash
-pip install -e ".[dev]"
+pip install --group dev      # pip >= 25.1
 pytest
 ruff check . && ruff format --check .
 python tools/build_reference.py    # regenerate the reference from the live API spec

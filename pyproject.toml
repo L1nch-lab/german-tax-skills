@@ -1,11 +1,7 @@
 # Kein Python-Paket: die Datei traegt nur die Werkzeug-Konfiguration fuer
 # Entwicklung und CI. Der Skill selbst braucht nur die Standardbibliothek.
-[project]
-name = "german-tax-skills"
-version = "0.1.0"
-requires-python = ">=3.10"
-
-[project.optional-dependencies]
+# Deshalb kein [project]/[build-system]: sonst versucht pip, das Repo zu bauen.
+[dependency-groups]
 dev = [
   "ruff==0.16.1",
   "pytest>=8",

@@ -23,7 +23,9 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "${{ matrix.python-version }}"
-      - run: pip install -e ".[dev]"
+      # --group braucht pip >= 25.1 (PEP 735); das Repo selbst wird nicht installiert.
+      - run: python -m pip install --upgrade pip
+      - run: pip install --group dev
       - run: ruff check .
       - run: ruff format --check .
       - run: pytest
