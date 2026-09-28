@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[codz]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Umgebungen und Secrets: der RapidAPI-Key gehoert nie ins Repo
+.env
+.env.*
+!.env.example
+.envrc
+.venv/
+venv/
+env/
+
+# Editoren und Betriebssysteme
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Claude Code, lokale Einstellungen
+.claude/settings.local.json

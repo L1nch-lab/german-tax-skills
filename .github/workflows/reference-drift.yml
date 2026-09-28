@@ -1,0 +1,35 @@
+name: reference-drift
+
+# Die Endpoint-Referenz wird aus https://api.rechner-hub.de/openapi.json erzeugt.
+# Aendert sich die API, schlaegt dieser Lauf fehl, bis die Referenz neu erzeugt
+# und committet ist (python tools/build_reference.py).
+
+on:
+  schedule:
+    - cron: "17 5 * * 1" # montags 05:17 UTC = 07:17 MESZ
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python tools/build_reference.py
+      - name: Referenz im Repo entspricht der Live-API
+        run: |
+          if ! git diff --quiet -- skills; then
+            git diff --stat -- skills
+            echo "::error::Endpoint-Referenz veraltet. Lokal python tools/build_reference.py ausfuehren und committen."
+            exit 1
+          fi
+          if [ -n "$(git status --porcelain -- skills)" ]; then
+            git status --porcelain -- skills
+            echo "::error::Neue oder entfernte Endpoints. Referenz neu erzeugen und committen."
+            exit 1
+          fi

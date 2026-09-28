@@ -1,0 +1,26 @@
+# Kein Python-Paket: die Datei traegt nur die Werkzeug-Konfiguration fuer
+# Entwicklung und CI. Der Skill selbst braucht nur die Standardbibliothek.
+[project]
+name = "german-tax-skills"
+version = "0.1.0"
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = [
+  "ruff==0.16.1",
+  "pytest>=8",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+# Markdown nicht formatieren (ruff >= 0.16): die Referenz ist generiert und
+# wuerde sonst zwischen Generator und Formatter hin- und herkippen.
+exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

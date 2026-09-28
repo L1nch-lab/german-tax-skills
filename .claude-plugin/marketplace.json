@@ -1,0 +1,16 @@
+{
+  "name": "l1nch-lab",
+  "description": "Agent skills from L1nch-lab for German tax and social security calculations.",
+  "owner": {
+    "name": "L1nch-lab",
+    "url": "https://github.com/L1nch-lab"
+  },
+  "plugins": [
+    {
+      "name": "german-tax-skills",
+      "source": ".",
+      "version": "0.1.0",
+      "description": "German tax, social security and benefit calculations through the rechner-hub.de API (RapidAPI key required)."
+    }
+  ]
+}
