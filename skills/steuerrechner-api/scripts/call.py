@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 HOST = "german-tax-calculator.p.rapidapi.com"
 BASE_URL = f"https://{HOST}"
 USER_AGENT = f"german-tax-skills/{VERSION}"

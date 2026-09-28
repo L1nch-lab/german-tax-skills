@@ -110,6 +110,8 @@ RAPIDAPI_KEY=your-key-here
 
 or export it as an environment variable. The skill reads it from there, never prints it and never asks you to paste it into the chat. Keep `.env` out of version control.
 
+If you installed the Claude Code plugin and no key is set, Claude Code shows a one-time hint with these steps when a session starts.
+
 A key in `userConfig` would not work here: Claude Code does not pass plugin options to commands run through the Bash tool.
 
 ## Quota

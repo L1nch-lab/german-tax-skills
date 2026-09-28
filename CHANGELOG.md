@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.0] - 2026-09-28
+
+### Added
+
+- Claude Code plugin: a one-time hint at session start when no `RAPIDAPI_KEY` is found in the environment or the project's `.env` (`hooks/key-hinweis.sh`). It never reads or prints the key itself.
+
+### Fixed
+
+- `SKILL.md` tells agents other than Claude Code (Codex, Cursor, Copilot, Gemini CLI …) to replace `${CLAUDE_SKILL_DIR}` with the skill folder. Before, the shell expanded it to an empty string and the script call failed.
+
 ## [0.1.0] - 2026-09-28
 
 ### Added
