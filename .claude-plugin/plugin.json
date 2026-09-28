@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Calculate German taxes, social security contributions and benefits (Brutto-Netto, Lohnsteuer, Einkommensteuer, Minijob, Abfindung, Kurzarbeitergeld, Elterngeld, Bürgergeld, Hebesätze and 100+ more) through the rechner-hub.de API on RapidAPI instead of estimating them.",
   "author": {
-    "name": "L1nch-lab",
+    "name": "Thomas Hakenes",
     "url": "https://github.com/L1nch-lab"
   },
   "homepage": "https://rechner-hub.de/steuerrechner-api/",

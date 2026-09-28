@@ -2,7 +2,7 @@
   "name": "l1nch-lab",
   "description": "Agent skills from L1nch-lab for German tax and social security calculations.",
   "owner": {
-    "name": "L1nch-lab",
+    "name": "Thomas Hakenes",
     "url": "https://github.com/L1nch-lab"
   },
   "plugins": [

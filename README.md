@@ -1,6 +1,17 @@
+<div align="center">
+
 # german-tax-skills
 
-Agent skills that calculate German taxes, social security contributions and social benefits through the [rechner-hub.de API](https://rechner-hub.de/steuerrechner-api/) instead of letting the model guess.
+**Agent skills that calculate German taxes, social security contributions and social benefits through the [rechner-hub.de API](https://rechner-hub.de/steuerrechner-api/) instead of letting the model guess.**
+
+[![RapidAPI](https://img.shields.io/badge/RapidAPI-German%20Tax%20Calculator-0055DA.svg)](https://rapidapi.com/rechnerhub/api/german-tax-calculator)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/L1nch-lab/german-tax-skills/blob/main/LICENSE)
+[![CI](https://github.com/L1nch-lab/german-tax-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/L1nch-lab/german-tax-skills/actions/workflows/ci.yml)
+[![Dependencies: 0](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://github.com/L1nch-lab/german-tax-skills/blob/main/pyproject.toml)
+
+[Install](#install) · [Get an API key on RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) · [API docs](https://rechner-hub.de/steuerrechner-api/) · [rechner-hub.de](https://rechner-hub.de/)
+
+</div>
 
 Ask Claude Code *"How much net do I keep from 4,200 € gross, tax class 1, Bavaria?"* and the skill picks the right endpoint, asks for missing required inputs, calls the API and reports the result together with the assumptions it used. It never estimates a tax figure itself.
 
@@ -18,7 +29,7 @@ The full list is in [`skills/steuerrechner-api/reference/INDEX.md`](skills/steue
 
 ## Requirements
 
-- A RapidAPI key with a subscription to the [German Tax Calculator](https://rapidapi.com/rechnerhub/api/german-tax-calculator). The free Basic plan (50 requests per day) is enough to try it.
+- A RapidAPI key with a subscription to the **[German Tax Calculator on RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator)**. The free Basic plan (50 requests per day) is enough to try it.
 - Python 3.10 or newer. The skill only uses the standard library.
 - Outbound HTTPS to `german-tax-calculator.p.rapidapi.com`. This works in Claude Code. The claude.ai web sandbox usually blocks it.
 
@@ -59,6 +70,8 @@ A key in `userConfig` would not work here: Claude Code does not pass plugin opti
 | Pro | 1,000 per day |
 | Ultra | 300,000 per month |
 
+Plans and prices: [rapidapi.com/rechnerhub/api/german-tax-calculator/pricing](https://rapidapi.com/rechnerhub/api/german-tax-calculator/pricing)
+
 After each call the script checks RapidAPI's rate limit headers. When the quota is nearly used up, Claude tells you with the result. When it is exhausted, Claude says so, tells you when it resets and does not retry.
 
 ## How it works
@@ -88,10 +101,21 @@ python tools/build_reference.py    # regenerate the reference from the live API 
 
 `tools/build_reference.py` also fails if `SKILL.md` mentions an endpoint that does not exist. A weekly workflow flags when the reference no longer matches the live API.
 
+## About rechner-hub.de
+
+The skill is a thin layer over [rechner-hub.de](https://rechner-hub.de/), a German site with more than 100 free tax, salary and social benefit calculators. Each calculator cites the statute it implements, and the values are checked against primary sources (gesetze-im-internet.de, Bundesgesetzblatt, BMF).
+
+- **Calculate in the browser, without a key:** [Brutto-Netto](https://rechner-hub.de/brutto-netto/), [Abfindung](https://rechner-hub.de/abfindungsrechner/), [Einkommensteuer](https://rechner-hub.de/einkommensteuer-rechner/), [Minijob](https://rechner-hub.de/minijob-rechner/) and [all calculators](https://rechner-hub.de/)
+- **Use the API in your own code:** [rechner-hub.de/steuerrechner-api](https://rechner-hub.de/steuerrechner-api/) (docs, examples, changelog)
+- **Subscribe and get a key:** [German Tax Calculator on RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator)
+- **Only need income tax, offline?** [`lohnsteuer-bmf`](https://github.com/L1nch-lab/lohnsteuer-bmf) implements the BMF Programmablaufplan as a Python package with zero dependencies.
+
 ## Disclaimer
 
-The results are calculations based on current German law, not tax advice.
+The results are calculations based on current German law, not tax advice. Provided as is, without warranty.
 
 ## License
 
-MIT
+The code and the generated endpoint reference in this repository are licensed under [MIT](LICENSE).
+
+The license does not cover the rechner-hub.de API itself, its calculations or data, or the names "rechner-hub" and "rechner-hub.de". Using the API is subject to the plan you subscribe to on [RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) and RapidAPI's terms.
