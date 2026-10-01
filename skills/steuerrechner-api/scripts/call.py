@@ -209,6 +209,11 @@ def build_request(args: argparse.Namespace, key: str | None) -> urllib.request.R
 
 
 def main() -> int:
+    # Unter Windows schreibt Python in eine Pipe mit cp1252; der Agent liest UTF-8
+    # und sieht dann "�247 BGB" statt "§247 BGB".
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Steuerrechner-API ueber RapidAPI aufrufen")
     parser.add_argument("method", nargs="?", choices=["GET", "POST", "get", "post"])
     parser.add_argument("path", nargs="?", help="z. B. /v1/brutto-netto")

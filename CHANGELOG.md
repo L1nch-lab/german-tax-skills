@@ -5,6 +5,7 @@
 ### Fixed
 
 - `call.py` finds `RAPIDAPI_KEY` in a `.env` written by PowerShell 5.1 (UTF-8 with BOM). Before, the BOM hid the key on the first line.
+- `call.py` writes UTF-8 on Windows. Piped output used cp1252, so agents saw `�247 BGB` instead of `§247 BGB` and broken umlauts.
 
 ## [0.2.1] - 2026-10-01
 
