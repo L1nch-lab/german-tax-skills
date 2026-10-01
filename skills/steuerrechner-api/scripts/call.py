@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-VERSION = "0.2.1"
+VERSION = "0.2.2"
 HOST = "german-tax-calculator.p.rapidapi.com"
 BASE_URL = f"https://{HOST}"
 USER_AGENT = f"german-tax-skills/{VERSION}"
@@ -70,7 +70,21 @@ def mask(text: str, key: str | None) -> str:
     return text.replace(key, "***") if key else text
 
 
+def cwd_in_skill_dir() -> bool:
+    # Die .env wird im Arbeitsverzeichnis gesucht. Wechselt der Agent vorher in den
+    # Skill-Ordner (gesehen 01.10.2026 in Claude Code), liegt sie nicht dort.
+    skill_dir = Path(__file__).resolve().parent.parent
+    cwd = Path.cwd().resolve()
+    return cwd == skill_dir or skill_dir in cwd.parents
+
+
 def missing_key_message() -> str:
+    if cwd_in_skill_dir():
+        return (
+            f"Kein API-Key gefunden: das Arbeitsverzeichnis ist der Skill-Ordner ({Path.cwd()}), "
+            f"die .env wird aber im Projektordner gesucht. Kein cd vorher, das Skript mit "
+            f"vollem Pfad aus dem Projektordner aufrufen."
+        )
     return (
         f"Kein API-Key gefunden. Setze {KEY_NAME} als Umgebungsvariable oder in einer "
         f".env-Datei im Projektordner ({KEY_NAME}=...). Den Key gibt es nach dem Abonnieren "

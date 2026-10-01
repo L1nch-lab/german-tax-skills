@@ -32,6 +32,8 @@ python3 ${CLAUDE_SKILL_DIR}/scripts/call.py --check
 
 (Use `python` instead of `python3` if `python3` is not found.)
 
+Run the script from the project folder and do not `cd` into the skill folder first: the `.env` is looked up in the current working directory.
+
 If no key is found, stop and explain, without asking for the key itself:
 - Subscribe to the API on RapidAPI (the free plan is enough to start): https://rapidapi.com/rechnerhub/api/german-tax-calculator
 - Put the key into a `.env` file in the project folder (`RAPIDAPI_KEY=...`) or set it as an environment variable, then restart Claude Code if it was set in the shell profile.

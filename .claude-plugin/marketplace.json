@@ -9,7 +9,7 @@
     {
       "name": "german-tax-skills",
       "source": ".",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "description": "German tax, social security and benefit calculations through the rechner-hub.de API (RapidAPI key required)."
     }
   ]

@@ -230,3 +230,16 @@ def test_key_aus_env_datei_auch_mit_bom(tmp_path, monkeypatch, bom):
     monkeypatch.delenv(call.KEY_NAME, raising=False)
     monkeypatch.chdir(tmp_path)
     assert call.find_key() == (KEY, ".env im Arbeitsverzeichnis")
+
+
+def test_fehlender_key_im_skill_ordner_nennt_die_ursache(monkeypatch):
+    monkeypatch.delenv(call.KEY_NAME, raising=False)
+    monkeypatch.chdir(SCRIPT.parent.parent)
+    assert call.find_key() == (None, "")
+    assert "Skill-Ordner" in call.missing_key_message()
+
+
+def test_fehlender_key_im_projektordner_bleibt_beim_standardtext(tmp_path, monkeypatch):
+    monkeypatch.delenv(call.KEY_NAME, raising=False)
+    monkeypatch.chdir(tmp_path)
+    assert "Skill-Ordner" not in call.missing_key_message()

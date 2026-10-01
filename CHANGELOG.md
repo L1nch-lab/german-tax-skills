@@ -1,11 +1,12 @@
 # Changelog
 
-## [Unreleased]
+## [0.2.2] - 2026-10-01
 
 ### Fixed
 
 - `call.py` finds `RAPIDAPI_KEY` in a `.env` written by PowerShell 5.1 (UTF-8 with BOM). Before, the BOM hid the key on the first line.
 - `call.py` writes UTF-8 on Windows. Piped output used cp1252, so agents saw `�247 BGB` instead of `§247 BGB` and broken umlauts.
+- An agent that changed into the skill folder before calling `call.py` got "no API key" although the project had a `.env`. `SKILL.md` now says not to `cd`, and `call.py` names the cause when it happens.
 
 ## [0.2.1] - 2026-10-01
 
