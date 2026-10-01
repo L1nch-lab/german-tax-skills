@@ -217,5 +217,7 @@ def test_header_wie_im_echten_request_log():
 def test_version_passt_zur_plugin_json():
     # Die Version steckt im User-Agent, ueber den die Nutzung gemessen wird.
     root = Path(__file__).resolve().parent.parent
-    plugin = json.loads((root / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
-    assert plugin["version"] == call.VERSION
+    # Zwei Manifeste: .claude-plugin/ fuer Claude Code, plugin.json im Root fuer Copilot.
+    for manifest in (root / ".claude-plugin" / "plugin.json", root / "plugin.json"):
+        plugin = json.loads(manifest.read_text(encoding="utf-8"))
+        assert plugin["version"] == call.VERSION, manifest

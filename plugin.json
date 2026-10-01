@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "german-tax-skills",
   "version": "0.2.1",
   "description": "Calculate German taxes, social security contributions and benefits (Brutto-Netto, Lohnsteuer, Einkommensteuer, Minijob, Abfindung, Kurzarbeitergeld, Elterngeld, Bürgergeld, Hebesätze and 100+ more) through the rechner-hub.de API on RapidAPI instead of estimating them.",

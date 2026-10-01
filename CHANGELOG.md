@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1] - 2026-10-01
+
+### Added
+
+- `plugin.json` at the repository root in the Agent Plugins format, so the plugin installs in the GitHub Copilot CLI. The Claude Code manifest in `.claude-plugin/` stays the source; CI checks that both agree.
+
 ## [0.2.0] - 2026-09-28
 
 ### Added

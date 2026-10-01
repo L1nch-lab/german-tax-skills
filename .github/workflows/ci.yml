@@ -45,6 +45,9 @@ jobs:
           market = json.loads(pathlib.Path(".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
           entry = next(p for p in market["plugins"] if p["name"] == plugin["name"])
           assert entry["version"] == plugin["version"], (entry["version"], plugin["version"])
+          agent = json.loads(pathlib.Path("plugin.json").read_text(encoding="utf-8"))
+          for key in ("name", "version", "description", "license"):
+              assert agent[key] == plugin[key], (key, agent[key], plugin[key])
           print(f"{plugin['name']} {plugin['version']} ok")
           EOF
       - name: SKILL.md nennt nur Endpoints, die es in der Live-Spezifikation gibt
