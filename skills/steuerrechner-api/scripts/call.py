@@ -54,7 +54,8 @@ def find_key() -> tuple[str | None, str]:
         return key, "Umgebungsvariable"
     env_file = Path.cwd() / ".env"
     if env_file.is_file():
-        for line in env_file.read_text(encoding="utf-8", errors="replace").splitlines():
+        # utf-8-sig: eine .env aus PowerShell 5.1 beginnt mit BOM, sonst fehlt die erste Zeile.
+        for line in env_file.read_text(encoding="utf-8-sig", errors="replace").splitlines():
             line = line.strip()
             if line.startswith("export "):
                 line = line[len("export ") :].lstrip()

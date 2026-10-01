@@ -221,3 +221,12 @@ def test_version_passt_zur_plugin_json():
     for manifest in (root / ".claude-plugin" / "plugin.json", root / "plugin.json"):
         plugin = json.loads(manifest.read_text(encoding="utf-8"))
         assert plugin["version"] == call.VERSION, manifest
+
+
+@pytest.mark.parametrize("bom", [b"", b"\xef\xbb\xbf"])
+def test_key_aus_env_datei_auch_mit_bom(tmp_path, monkeypatch, bom):
+    # PowerShell 5.1 schreibt mit Set-Content -Encoding utf8 ein BOM vor die erste Zeile.
+    (tmp_path / ".env").write_bytes(bom + f"RAPIDAPI_KEY={KEY}\n".encode())
+    monkeypatch.delenv(call.KEY_NAME, raising=False)
+    monkeypatch.chdir(tmp_path)
+    assert call.find_key() == (KEY, ".env im Arbeitsverzeichnis")
