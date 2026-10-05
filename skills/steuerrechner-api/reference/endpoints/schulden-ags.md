@@ -10,7 +10,7 @@ Zeitreihe der Schulden des kommunalen Kernhaushalts (GENESIS 71327-Z-01, Stichta
 
 | Parameter | Ort | Typ | Pflicht | Beschreibung |
 |---|---|---|---|---|
-| `ags` | path | string | ja |  |
+| `ags` | path | string | ja | 8-stelliger Amtlicher Gemeindeschluessel oder 5-stellige Postleitzahl. Gehoert die PLZ zu mehreren Gemeinden, kommt 409 mit den Kandidaten. |
 
 ## Antwort: Felder in `data`
 

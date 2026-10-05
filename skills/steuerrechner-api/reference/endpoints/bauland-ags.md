@@ -10,7 +10,7 @@ Zeitreihe 1995-2024 der Statistik der Kaufwerte fuer Bauland (GENESIS 61511-01-0
 
 | Parameter | Ort | Typ | Pflicht | Beschreibung |
 |---|---|---|---|---|
-| `ags` | path | string | ja |  |
+| `ags` | path | string | ja | 8-stelliger Amtlicher Gemeindeschluessel oder 5-stellige Postleitzahl. Gehoert die PLZ zu mehreren Gemeinden, kommt 409 mit den Kandidaten. |
 
 ## Antwort: Felder in `data`
 

@@ -98,6 +98,7 @@ Every response has the same envelope: `success`, `data`, `input_echo`, `meta`.
 | HTTP 401 | Key invalid | Ask the user to check the key in the RapidAPI dashboard |
 | HTTP 403 "not subscribed" | Key valid, but no plan for this API | Subscribe to the free plan (link above) |
 | HTTP 422 | Input rejected | Read the error detail, fix field names/values against the reference, retry once |
+| HTTP 409 `PLZ_AMBIGUOUS` | The postal code belongs to several municipalities | Show the user the candidates from `error.details` (name, Bundesland) and ask which one is meant, unless the conversation already names it. Then repeat the call with that 8-digit `ags`. Never pick the first candidate |
 | exit 4 (HTTP 429) | The request quota of the user's RapidAPI plan is used up (daily on Basic and Pro, monthly on Ultra) | Stop. Tell the user plainly that the RapidAPI request limit is exceeded, when it resets (the script prints it) and that a bigger plan is available (the script prints the link). Do not retry |
 | exit 5 (HTTP 429) | Rate limit: too many requests in a short time | Tell the user. Retry at most once after a short pause, and for many rows switch to the `/batch` endpoint |
 | exit 3 | Network error | Report it. In a sandbox without internet the skill cannot work |

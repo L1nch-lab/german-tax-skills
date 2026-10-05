@@ -1,6 +1,6 @@
 # Endpoint-Index
 
-Erzeugt aus der OpenAPI-Spezifikation (API-Version 2026.50) mit `tools/build_reference.py`.
+Erzeugt aus der OpenAPI-Spezifikation (API-Version 2026.51) mit `tools/build_reference.py`.
 Nicht von Hand bearbeiten.
 
 | Kategorie | Methode | Pfad | Zweck | Referenz |

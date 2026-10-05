@@ -11,8 +11,9 @@ Berechnet die Gesamtsteuerbelastung einer GmbH: Koerperschaftsteuer (15%), Solid
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
 | `gewinn` | number | ja |  |  | Zu versteuerndes Einkommen der Kapitalgesellschaft in EUR |
-| `hebesatz` | integer |  |  |  | Gewerbesteuer-Hebesatz (oder ags/gemeinde zur Ermittlung) |
+| `hebesatz` | integer |  |  |  | Gewerbesteuer-Hebesatz (oder ags/plz/gemeinde zur Ermittlung) |
 | `ags` | string |  |  |  | 8-stelliger AGS zur Hebesatz-Ermittlung |
+| `plz` | string |  |  |  | 5-stellige PLZ zur Hebesatz-Ermittlung. Gehoert sie zu mehreren Gemeinden, kommt 409 PLZ_AMBIGUOUS mit den Kandidaten (dann ags senden). |
 | `gemeinde` | string |  |  |  | Gemeindename zur Hebesatz-Suche |
 | `ausschuettung_prozent` | number |  | "100" |  | Anteil des Gewinns nach Steuern, der ausgeschuettet wird (0-100%) |
 | `kirchenmitglied` | boolean |  | false |  | Ob der Gesellschafter kirchensteuerpflichtig ist |

@@ -10,7 +10,7 @@ Liefert die Wohnungskennzahlen des Zensus 2022 (Stichtag 15.05.2022) fuer eine G
 
 | Parameter | Ort | Typ | Pflicht | Beschreibung |
 |---|---|---|---|---|
-| `ags` | path | string | ja |  |
+| `ags` | path | string | ja | 8-stelliger Amtlicher Gemeindeschluessel oder 5-stellige Postleitzahl. Gehoert die PLZ zu mehreren Gemeinden, kommt 409 mit den Kandidaten. |
 
 ## Antwort: Felder in `data`
 

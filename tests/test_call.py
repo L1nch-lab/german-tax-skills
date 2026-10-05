@@ -79,6 +79,21 @@ SCENARIOS = {
         {"x-ratelimit-requests-limit": "100", "x-ratelimit-requests-remaining": "80"},
     ),
     "/v1/echo-key": (401, {"message": f"Invalid API key {KEY}"}, {}),
+    "/v1/mietstufe/54636": (
+        409,
+        {
+            "success": False,
+            "error": {
+                "code": "PLZ_AMBIGUOUS",
+                "message": "Postal code '54636' belongs to 39 municipalities.",
+                "details": [
+                    {"ags": "07232003", "name": "Altscheid", "bundesland": "Rheinland-Pfalz"},
+                    {"ags": "07232009", "name": "Baustert", "bundesland": "Rheinland-Pfalz"},
+                ],
+            },
+        },
+        {},
+    ),
 }
 
 
@@ -153,6 +168,15 @@ def test_normales_restkontingent_ohne_warnung(gateway, monkeypatch, capsys):
     assert code == 0
     assert "Restkontingent: 80 von 100" in err
     assert "WARNUNG" not in err
+
+
+def test_mehrdeutige_plz_zeigt_kandidaten_und_nennt_den_weg(gateway, monkeypatch, capsys):
+    code, out, err = run(monkeypatch, capsys, "GET", "v1/mietstufe/54636")
+    assert code == 1
+    assert "07232003" in out
+    assert "Baustert" in out
+    assert "HTTP 409" in err
+    assert "8-stelligen AGS" in err
 
 
 def test_key_wird_maskiert_und_user_agent_gesetzt(gateway, monkeypatch, capsys):

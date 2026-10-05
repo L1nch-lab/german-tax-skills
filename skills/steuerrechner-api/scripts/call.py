@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-VERSION = "0.2.2"
+VERSION = "0.2.3"
 HOST = "german-tax-calculator.p.rapidapi.com"
 BASE_URL = f"https://{HOST}"
 USER_AGENT = f"german-tax-skills/{VERSION}"
@@ -299,6 +299,10 @@ def main() -> int:
         hint = {
             401: "Key ungueltig oder fehlt.",
             403: f"Kein Abo fuer diese API. Free-Plan abonnieren: {SUBSCRIBE_URL}",
+            409: (
+                "PLZ gehoert zu mehreren Gemeinden. Kandidaten aus error.details zeigen "
+                "und mit dem 8-stelligen AGS der gewaehlten Gemeinde wiederholen."
+            ),
             422: "Eingabe ungueltig. Feldnamen und Werte gegen die Endpoint-Referenz pruefen.",
         }.get(status, "")
         print(mask(f"HTTP {status}. {hint}".strip(), key), file=sys.stderr)

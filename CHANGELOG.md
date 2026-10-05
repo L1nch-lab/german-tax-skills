@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.3] - 2026-10-05
+
+### Changed
+
+- Endpoint reference regenerated for API version 2026.51. The municipal endpoints (`mietstufe`, `einkommen`, `schulden`, `finanzamt`, `grundsteuer-monitor`, `pv-ertrag`, `bauland`, `zensus/wohnungen`) take a 5-digit postal code in place of the AGS, `hebesaetze-historie` takes `plz` as an alternative to `ags`, and `gewerbesteuer` and `koerperschaftsteuer` accept `plz` to look up the Hebesatz.
+
+### Added
+
+- A postal code that belongs to several municipalities answers with HTTP 409 `PLZ_AMBIGUOUS` and the list of candidates. `SKILL.md` tells the agent to show the candidates and repeat the call with the chosen AGS; `call.py` prints the same hint.
+
 ## [0.2.2] - 2026-10-01
 
 ### Fixed
