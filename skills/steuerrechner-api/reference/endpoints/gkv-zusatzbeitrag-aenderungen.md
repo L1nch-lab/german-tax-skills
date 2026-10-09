@@ -22,7 +22,7 @@ Liefert jeden Wechsel des Zusatzbeitrags, der in einem Snapshot NACH `since` ers
 | `stand` | string | ja |  |  | Juengstes Snapshot-Datum im Datensatz; beim naechsten Aufruf als since senden |
 | `anzahl_gesamt` | integer | ja |  |  | Wechsel insgesamt (ohne limit/offset) |
 | `anzahl` | integer | ja |  |  | Wechsel in dieser Antwort |
-| `limit` | integer | ja |  |  |  |
-| `offset` | integer | ja |  |  |  |
+| `limit` | integer | ja |  |  | Verwendete Seitengröße (1 bis 5000, Default 1000). |
+| `offset` | integer | ja |  |  | Verwendete Startposition in der Gesamttrefferliste (Default 0). |
 | `truncated` | boolean | ja |  |  | True, wenn nach dieser Seite weitere Treffer folgen |
-| `eintraege` | array<GkvAenderungItem> | ja |  |  |  |
+| `eintraege` | array<GkvAenderungItem> | ja |  |  | Zusatzbeitrags-Wechsel dieser Seite, sortiert nach festgestellt_am und ik_nummer. |

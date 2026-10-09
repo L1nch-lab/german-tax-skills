@@ -32,13 +32,13 @@ Beispiel:
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
 | `forderung_eur` | string | ja |  |  | Hauptforderung in EUR |
-| `faelligkeit` | string | ja |  |  |  |
-| `zahlungsdatum` | string | ja |  |  |  |
-| `geschaeftsverkehr` | enum | ja |  | b2c, b2b |  |
+| `faelligkeit` | string | ja |  |  | Fälligkeitsdatum der Forderung (ISO-Datum) aus der Anfrage. Der Tag selbst zählt nicht als Verzugstag. |
+| `zahlungsdatum` | string | ja |  |  | Zahlungsdatum (ISO-Datum); zählt als letzter Verzugstag mit. Fehlt es in der Anfrage, wird das heutige Datum verwendet. |
+| `geschaeftsverkehr` | enum | ja |  | b2c, b2b | "b2c" (Aufschlag 5 Prozentpunkte) oder "b2b" (9 Prozentpunkte). Bei b2b ist zusätzlich die 40-EUR-Pauschale möglich. |
 | `aufschlag_prozent` | string | ja |  |  | +5 (b2c) oder +9 (b2b) Prozentpunkte |
 | `verzugsbeginn` | string | ja |  |  | Tag NACH Faelligkeit (§286 Abs. 1 BGB) |
 | `verzugstage_gesamt` | integer | ja |  |  | Tage von verzugsbeginn bis zahlungsdatum (inkl.) |
 | `posten` | array<VerzugszinsPostenModel> | ja |  |  | Pro Halbjahres-Fenster ein Posten – keine Mischzinsen |
 | `verzugszinsen_summe_eur` | string | ja |  |  | Summe aller Posten-Zinsen in EUR (auf 2 Nachkommastellen gerundet) |
 | `pauschale_288_abs_5_eur` | string |  |  |  | 40-EUR-Pauschale §288 Abs. 5 BGB – nur fuer b2b und nur wenn pauschale_anwenden=True. Wird NICHT in verzugszinsen_summe_eur addiert. |
-| `rechtsgrundlage` | string | ja |  |  |  |
+| `rechtsgrundlage` | string | ja |  |  | Fester Text je Geschäftsverkehr: § 288 Abs. 1 BGB bei b2c, § 288 Abs. 2 BGB bei b2b, jeweils mit Höhe des Aufschlags. |

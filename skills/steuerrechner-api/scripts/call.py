@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-VERSION = "0.2.3"
+VERSION = "0.2.4"
 HOST = "german-tax-calculator.p.rapidapi.com"
 BASE_URL = f"https://{HOST}"
 USER_AGENT = f"german-tax-skills/{VERSION}"
@@ -284,8 +284,10 @@ def main() -> int:
         return 3
 
     try:
-        out = json.dumps(json.loads(payload), ensure_ascii=False, indent=2)
+        parsed = json.loads(payload)
+        out = json.dumps(parsed, ensure_ascii=False, indent=2)
     except json.JSONDecodeError:
+        parsed = None
         out = payload
     print(mask(out, key))
     info = quota_info(headers)
@@ -296,11 +298,17 @@ def main() -> int:
         return code
 
     if status >= 400:
+        error_code = parsed.get("error", {}).get("code", "") if isinstance(parsed, dict) else ""
+        mehrdeutig = (
+            "Gemeindename trifft mehrere Gemeinden"
+            if error_code == "GEMEINDE_AMBIGUOUS"
+            else "PLZ gehoert zu mehreren Gemeinden"
+        )
         hint = {
             401: "Key ungueltig oder fehlt.",
             403: f"Kein Abo fuer diese API. Free-Plan abonnieren: {SUBSCRIBE_URL}",
             409: (
-                "PLZ gehoert zu mehreren Gemeinden. Kandidaten aus error.details zeigen "
+                f"{mehrdeutig}. Kandidaten aus error.details zeigen "
                 "und mit dem 8-stelligen AGS der gewaehlten Gemeinde wiederholen."
             ),
             422: "Eingabe ungueltig. Feldnamen und Werte gegen die Endpoint-Referenz pruefen.",

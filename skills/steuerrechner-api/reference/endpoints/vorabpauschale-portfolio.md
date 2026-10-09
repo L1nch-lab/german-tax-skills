@@ -4,7 +4,7 @@
 
 Kategorie: Vorabpauschale
 
-Berechnet die Vorabpauschale nach §18 InvStG fuer bis zu 1.000 Fonds in einem Aufruf. Optimiert fuer Robo-Advisor-Use-Cases (n Kunden × m Fonds × jaehrlich Anfang Januar). Per-Item-Error-Isolation: Schlaegt die Berechnung eines Items fehl (z.B. Jahr ohne BMF-Basiszins, ungueltige Eingabe), werden die anderen Items dennoch berechnet. Antwortet mit `data.items[i].success` als Pro-Item-Status plus aggregiertem `summe_steuerpflichtig` ueber alle erfolgreichen Items. Top-level `success=True` bedeutet ledigich, dass das Request well-formed war (keine 400/422).
+Berechnet die Vorabpauschale nach §18 InvStG fuer bis zu 1.000 Fonds in einem Aufruf. Optimiert fuer Robo-Advisor-Use-Cases (n Kunden × m Fonds × jaehrlich Anfang Januar). Per-Item-Error-Isolation: Schlaegt die Berechnung eines Items fehl (z.B. Jahr ohne BMF-Basiszins, ungueltige Eingabe), werden die anderen Items dennoch berechnet. Antwortet mit `data.items[i].success` als Pro-Item-Status plus aggregiertem `summe_steuerpflichtig` ueber alle erfolgreichen Items. Top-level `success=True` bedeutet lediglich, dass das Request well-formed war (keine 400/422).
 
 ## Request-Body (JSON)
 

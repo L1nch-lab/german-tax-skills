@@ -26,13 +26,13 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `netto_monat` | string | ja |  |  |  |
+| `netto_monat` | string | ja |  |  | Echo des durchschnittlichen monatlichen Nettoentgelts der letzten drei abgerechneten Kalendermonate vor der Schutzfrist in EUR; wird durch 30 geteilt zu netto_kalendertag. |
 | `netto_kalendertag` | string | ja |  |  | Nettoentgelt je Kalendertag (Monat / 30) |
 | `kk_hoechstbetrag_pro_tag` | string | ja |  |  | GKV-Deckel je Kalendertag (§ 24i Abs. 2 SGB V: 13 EUR) |
 | `hoechstbetrag_ohne_gkv` | string | ja |  |  | Kontext-Info: Deckel fuer Frauen ohne GKV-Mitgliedschaft, gesamt (§ 19 Abs. 2 S. 1 MuSchG: 210 EUR) – geht in keine Berechnung ein |
 | `kk_pro_tag` | string | ja |  |  | Mutterschaftsgeld der Krankenkasse je Kalendertag |
 | `ag_zuschuss_pro_tag` | string | ja |  |  | Arbeitgeberzuschuss je Kalendertag (§ 20 Abs. 1 MuSchG) |
-| `verlaengerte_schutzfrist` | boolean | ja |  |  |  |
+| `verlaengerte_schutzfrist` | boolean | ja |  |  | Echo der Angabe verlängerte Schutzfrist (Früh-, Mehrlingsgeburt oder festgestellte Behinderung des Kindes). Bei true rechnet die API mit 126 statt 98 Kalendertagen. |
 | `schutzfrist_tage` | integer | ja |  |  | Schutzfrist in Kalendertagen (98 bzw. 126) |
 | `schutzfrist_wochen` | integer | ja |  |  | Schutzfrist in Wochen (14 bzw. 18) |
 | `kk_gesamt` | string | ja |  |  | Krankenkassen-Anteil ueber die gesamte Schutzfrist |

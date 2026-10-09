@@ -15,7 +15,7 @@ Berechnet die Gewerbesteuer fuer Einzelunternehmen, Personengesellschaften und K
 | `hebesatz` | integer |  |  |  | Gewerbesteuer-Hebesatz in Prozent (z.B. 490 fuer 490%). Alternativ: ags, plz oder gemeinde zur automatischen Ermittlung. |
 | `ags` | string |  |  |  | 8-stelliger Amtlicher Gemeindeschluessel (AGS) zur automatischen Hebesatz-Ermittlung. |
 | `plz` | string |  |  |  | 5-stellige PLZ zur Hebesatz-Ermittlung. Gehoert sie zu mehreren Gemeinden, kommt 409 PLZ_AMBIGUOUS mit den Kandidaten (dann ags senden). |
-| `gemeinde` | string |  |  |  | Gemeindename zur Hebesatz-Suche (verwendet erstes Ergebnis). Beispiel: 'München'. |
+| `gemeinde` | string |  |  |  | Gemeindename zur Hebesatz-Suche, z. B. 'München'. Zaehlt nur ein eindeutiger Treffer (exakter Name, sonst ein einziger Teiltreffer); sonst 409 GEMEINDE_AMBIGUOUS mit allen Kandidaten (dann ags senden). |
 
 Beispiel:
 

@@ -24,7 +24,7 @@ Liefert alle Gemeinden, deren Hebesatz zu einem Stichtag NACH `since` als geaend
 | `stand` | string | ja |  |  | Juengster Stichtag im Datensatz; beim naechsten Aufruf als since senden |
 | `anzahl_gesamt` | integer | ja |  |  | Treffer insgesamt (ohne limit/offset) |
 | `anzahl` | integer | ja |  |  | Treffer in dieser Antwort |
-| `limit` | integer | ja |  |  |  |
-| `offset` | integer | ja |  |  |  |
+| `limit` | integer | ja |  |  | Verwendete Seitengröße (1 bis 5000, Default 1000). |
+| `offset` | integer | ja |  |  | Verwendete Startposition in der Gesamttrefferliste (Default 0). |
 | `truncated` | boolean | ja |  |  | True, wenn nach dieser Seite weitere Treffer folgen |
-| `eintraege` | array<HebesatzAenderungItem> | ja |  |  |  |
+| `eintraege` | array<HebesatzAenderungItem> | ja |  |  | Gemeldete Hebesatz-Änderungen dieser Seite, sortiert nach stichtag, steuerart und ags. |

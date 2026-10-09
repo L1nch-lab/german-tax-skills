@@ -27,7 +27,7 @@ Beispiel:
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
 | `jahr` | integer | ja |  |  | Angewendetes Bezugsjahr |
-| `anzahl_kinder` | integer | ja |  |  |  |
+| `anzahl_kinder` | integer | ja |  |  | Anzahl der kindergeldberechtigten Kinder aus der Eingabe (1 bis 30); Multiplikator für satz_pro_kind. |
 | `satz_pro_kind` | string | ja |  |  | Kindergeld je Kind und Monat (§ 66 Abs. 1 EStG) |
 | `kindergeld_monat` | string | ja |  |  | Kindergeld gesamt pro Monat |
 | `kindergeld_jahr` | string | ja |  |  | Kindergeld gesamt pro Jahr |

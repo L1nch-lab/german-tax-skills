@@ -34,13 +34,13 @@ Berechnet die getrennte Verlustverrechnung in den drei steuerlichen Toepfen nach
 | `krypto_topf_saldo` | string | ja |  |  | §23 EStG Saldo in EUR (positiv vor Freigrenze, negativ = Verlust-Vortrag) |
 | `krypto_topf_vortrag_neu` | string | ja |  |  | Verbleibender §23 Verlustvortrag in Folgejahr in EUR (immer >= 0) |
 | `krypto_freigrenze_greift` | boolean | ja |  |  | True wenn §23 Saldo > 0 aber unter 1.000 EUR Freigrenze |
-| `sparer_pauschbetrag_verfuegbar` | string | ja |  |  |  |
+| `sparer_pauschbetrag_verfuegbar` | string | ja |  |  | Angesetzter Sparer-Pauschbetrag in EUR (Eingabe, Default 1.000 für Einzelveranlagung, maximal 2.000). Wird nur gegen den Sonstigen Topf verrechnet. |
 | `sparer_pauschbetrag_verbraucht` | string | ja |  |  | An den Sonstigen Topf angerechneter Betrag in EUR |
-| `sparer_pauschbetrag_rest` | string | ja |  |  |  |
+| `sparer_pauschbetrag_rest` | string | ja |  |  | Nicht verbrauchter Teil des Sparer-Pauschbetrags in EUR (verfügbar minus verbraucht). Entspricht dem vollen verfügbaren Betrag, wenn der Sonstige Topf nicht positiv ist. |
 | `steuerpflichtige_kapitalertraege` | string | ja |  |  | Steuerpflichtiger §20-Endsaldo nach SP-Anrechnung in EUR |
 | `steuerpflichtige_krypto` | string | ja |  |  | Steuerpflichtiger §23-Krypto-Gewinn in EUR (0 wenn Freigrenze greift) |
 | `aktien_topf_aktiv` | boolean | ja |  |  | Status §20 Abs. 6 Satz 4 EStG (False nach BVerfG-Aufhebung) |
 | `bverfg_hinweis` | string | ja |  |  | Hinweis-Text zum §165 AO-Vorlaeufigkeitsvermerk (None wenn nicht relevant) |
 | `ersparnis_vs_naive` | string | ja |  |  | Geschaetzte Steuer-Ersparnis durch Verlustverrechnung in EUR (Vergleichssatz 26,375 % KapESt+Soli, ohne KiSt; nur §20-Welt) |
-| `veranlagungszeitraum` | integer | ja |  |  |  |
-| `rechtsgrundlage` | string | ja |  |  |  |
+| `veranlagungszeitraum` | integer | ja |  |  | Echo des Veranlagungsjahres (2018–2030, Default aktuelles Steuerjahr). Ist nur für den Aktien-Topf-Schalter vorgesehen und verändert das Ergebnis derzeit nicht. |
+| `rechtsgrundlage` | string | ja |  |  | Fester Text mit den angewendeten Normen und dem BVerfG-Aktenzeichen, gleich für jede Anfrage. |

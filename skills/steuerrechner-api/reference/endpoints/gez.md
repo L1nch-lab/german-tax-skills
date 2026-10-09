@@ -36,13 +36,13 @@ Beispiel:
 |---|---|---|---|---|---|
 | `status` | string | ja |  |  | VOLLBEFREIUNG \| ERMAESSIGUNG \| HAERTEFALL \| ABMELDUNG \| BEITRAGSPFLICHTIG |
 | `ampel` | string | ja |  |  | GRUEN \| GELB \| ROT |
-| `titel` | string | ja |  |  |  |
-| `beschreibung` | string | ja |  |  |  |
-| `ersparnis_monatlich` | string | ja |  |  |  |
-| `ersparnis_jaehrlich` | string | ja |  |  |  |
-| `beitrag_monatlich` | string | ja |  |  |  |
-| `rechtsgrundlage` | string | ja |  |  |  |
-| `dokumente` | array<string> | ja |  |  |  |
-| `naechster_schritt` | string | ja |  |  |  |
+| `titel` | string | ja |  |  | Kurze Überschrift zum Ergebnis, z. B. "Vollbefreiung – Sozialleistungsbezug" oder "Beitragspflichtig". |
+| `beschreibung` | string | ja |  |  | Erklärender Text zum Ergebnis in Du-Form; beim Härtefall mit verfügbarem Einkommen und Schwellenwert. |
+| `ersparnis_monatlich` | string | ja |  |  | Monatliche Ersparnis gegenüber dem vollen Rundfunkbeitrag in EUR: voller Beitrag bei Befreiung oder Abmeldung, Differenz zum ermäßigten Beitrag bei Merkzeichen RF, 0 bei Beitragspflicht. |
+| `ersparnis_jaehrlich` | string | ja |  |  | ersparnis_monatlich × 12 in EUR. |
+| `beitrag_monatlich` | string | ja |  |  | Nach dem Ergebnis noch zu zahlender Rundfunkbeitrag in EUR pro Monat (0 bei Befreiung, ermäßigter Beitrag bei RF, voller Beitrag bei Beitragspflicht). |
+| `rechtsgrundlage` | string | ja |  |  | Norm, auf die sich das Ergebnis stützt, als Text, z. B. "§4 Abs. 1 Nr. 3 RBStV"; bei Sozialleistungen aus dem Katalog der ersten angegebenen Leistung. |
+| `dokumente` | array<string> | ja |  |  | Liste der für den Antrag benötigten Nachweise; leere Liste bei Beitragspflicht. |
+| `naechster_schritt` | string | ja |  |  | Feste Handlungsempfehlung "Antrag online stellen beim Beitragsservice"; steht unabhängig vom Status in jeder Antwort, auch bei Beitragspflicht. |
 | `link` | string | ja |  |  | URL zum offiziellen Antragsformular |
-| `fristenhinweis` | string | ja |  |  |  |
+| `fristenhinweis` | string | ja |  |  | Hinweis zu Beginn, Rückwirkung oder Dauer der Befreiung je Ergebnis; leerer String bei Beitragspflicht. |

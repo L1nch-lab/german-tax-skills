@@ -31,24 +31,24 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `brutto_rente_monat` | string | ja |  |  |  |
-| `zusatzeinkommen_monat` | string | ja |  |  |  |
-| `gesamt_brutto_monat` | string | ja |  |  |  |
-| `besteuerungsanteil` | string | ja |  |  |  |
-| `kirchensteuer` | boolean | ja |  |  |  |
-| `bundesland` | string | ja |  |  |  |
+| `brutto_rente_monat` | string | ja |  |  | Monatliche Bruttorente in EUR aus der Eingabe, auf 2 Stellen gerundet. |
+| `zusatzeinkommen_monat` | string | ja |  |  | Monatlicher Brutto-Arbeitslohn in EUR aus der Eingabe (nur nichtselbständige Arbeit, die unter § 3 Nr. 21 EStG fällt). |
+| `gesamt_brutto_monat` | string | ja |  |  | Summe aus brutto_rente_monat und zusatzeinkommen_monat in EUR pro Monat. |
+| `besteuerungsanteil` | string | ja |  |  | Steuerpflichtiger Anteil der Rente als Faktor 0–1 (Standard 0.84), Echo der Eingabe. Wird direkt mit der Jahresbruttorente multipliziert. |
+| `kirchensteuer` | boolean | ja |  |  | Echo der Eingabe: true, wenn Kirchensteuer mitgerechnet wird. |
+| `bundesland` | string | ja |  |  | Bundesland aus der Eingabe; bestimmt nur den Kirchensteuersatz (8 % oder 9 % der ESt). |
 | `monate_mit_voraussetzungen` | integer | ja |  |  | Monate mit Voraussetzungen des § 3 Nr. 21 S. 1 EStG (Zwoelftelung S. 3) |
 | `freibetrag_monat` | string | ja |  |  | Genutzter Aktivrente-Freibetrag/Monat |
-| `freibetrag_jahr` | string | ja |  |  |  |
+| `freibetrag_jahr` | string | ja |  |  | Tatsächlich angesetzter Aktivrente-Freibetrag in EUR pro Jahr: Arbeitslohn der Monate mit Voraussetzungen, höchstens 2.000 EUR je solchem Monat (Zwölftelung nach § 3 Nr. 21 S. 3 EStG). |
 | `est_ohne` | string | ja |  |  | ESt ohne Aktivrente (altes Recht) |
-| `soli_ohne` | string | ja |  |  |  |
-| `kist_ohne` | string | ja |  |  |  |
-| `abzuege_ohne_jahr` | string | ja |  |  |  |
-| `netto_ohne_monat` | string | ja |  |  |  |
+| `soli_ohne` | string | ja |  |  | Solidaritätszuschlag in EUR pro Jahr ohne Aktivrente-Freibetrag. |
+| `kist_ohne` | string | ja |  |  | Kirchensteuer in EUR pro Jahr ohne Aktivrente-Freibetrag; 0, wenn kirchensteuer false ist. |
+| `abzuege_ohne_jahr` | string | ja |  |  | ESt + Soli + KiSt in EUR pro Jahr ohne Freibetrag. Das zvE ist steuerpflichtiger Rentenanteil plus Arbeitslohn im Grundtarif, ohne Pauschbeträge, Vorsorgeaufwendungen oder Sozialabgaben. |
+| `netto_ohne_monat` | string | ja |  |  | Monatliches Netto in EUR ohne Freibetrag: (Jahresrente + Jahresarbeitslohn − abzuege_ohne_jahr) / 12. Kranken-, Pflege- und Rentenversicherungsbeiträge sind nicht abgezogen. |
 | `est_mit` | string | ja |  |  | ESt mit Aktivrente (neues Recht) |
-| `soli_mit` | string | ja |  |  |  |
-| `kist_mit` | string | ja |  |  |  |
-| `abzuege_mit_jahr` | string | ja |  |  |  |
-| `netto_mit_monat` | string | ja |  |  |  |
+| `soli_mit` | string | ja |  |  | Solidaritätszuschlag in EUR pro Jahr mit Aktivrente-Freibetrag. |
+| `kist_mit` | string | ja |  |  | Kirchensteuer in EUR pro Jahr mit Aktivrente-Freibetrag; 0, wenn kirchensteuer false ist. |
+| `abzuege_mit_jahr` | string | ja |  |  | ESt + Soli + KiSt in EUR pro Jahr mit Freibetrag (zvE um freibetrag_jahr gemindert, kein Progressionsvorbehalt). Gleiche Vereinfachungen wie abzuege_ohne_jahr. |
+| `netto_mit_monat` | string | ja |  |  | Monatliches Netto in EUR mit Freibetrag: (Jahresrente + Jahresarbeitslohn − abzuege_mit_jahr) / 12, ohne Sozialabgaben. |
 | `ersparnis_jahr` | string | ja |  |  | Steuerersparnis pro Jahr durch Aktivrente |
-| `ersparnis_monat` | string | ja |  |  |  |
+| `ersparnis_monat` | string | ja |  |  | Steuerersparnis durch den Aktivrente-Freibetrag in EUR pro Monat: (abzuege_ohne_jahr − abzuege_mit_jahr) / 12. |

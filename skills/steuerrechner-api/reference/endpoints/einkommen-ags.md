@@ -16,6 +16,6 @@ Zeitreihe des Gesamtbetrags der Einkuenfte (§ 2 Abs. 3 EStG) und der Zahl der S
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `ags` | string | ja |  |  |  |
-| `hinweis` | string |  | "Merkmal ist der Gesamtbetrag der Einkuenfte (§ 2 Abs. 3 EStG), nicht das Bruttoeinkommen. Datenlag typischerweise 3-4 Jahre." |  |  |
-| `eintraege` | array<EinkommenGemeindeItem> | ja |  |  |  |
+| `ags` | string | ja |  |  | 8-stelliger Amtlicher Gemeindeschlüssel; bei Anfrage per PLZ die daraus aufgelöste AGS. |
+| `hinweis` | string |  | "Merkmal ist der Gesamtbetrag der Einkuenfte (§ 2 Abs. 3 EStG), nicht das Bruttoeinkommen. Datenlag typischerweise 3-4 Jahre." |  | Fester Hinweistext: Merkmal ist der Gesamtbetrag der Einkünfte, nicht das Bruttoeinkommen, mit typischerweise 3 bis 4 Jahren Datenverzug. |
+| `eintraege` | array<EinkommenGemeindeItem> | ja |  |  | Jahreswerte der Lohn- und Einkommensteuerstatistik für die Gemeinde, aufsteigend nach jahr; nicht jedes Jahr ist vorhanden (z. B. 2007, 2010, 2013, ...). |

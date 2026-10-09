@@ -30,12 +30,12 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `arbeitstage_gesamt` | integer | ja |  |  |  |
+| `arbeitstage_gesamt` | integer | ja |  |  | Echo der Arbeitstage pro Jahr (0–366, Default 220). Die Optimierung prüft jede Aufteilung von 0 bis zu diesem Wert. |
 | `homeoffice_tage` | integer | ja |  |  | Eingegebene HO-Tage |
 | `ho_tage_eff` | integer | ja |  |  | Effektiv abrechenbare HO-Tage (gedeckelt 210) |
 | `buerotage` | integer | ja |  |  | Buerotage = arbeitstage - homeoffice_tage |
-| `entfernung_km` | string | ja |  |  |  |
-| `grenzsteuersatz` | string | ja |  |  |  |
+| `entfernung_km` | string | ja |  |  | Echo der einfachen Entfernung Wohnung–Büro in km. Pendlerpauschale je Bürotag = entfernung_km × 0,38 EUR. |
+| `grenzsteuersatz` | string | ja |  |  | Echo des Grenzsteuersatzes als Faktor 0–1 (0.35 = 35 %), nicht in Prozent. Multipliziert den anrechenbaren Abzug zur Steuerersparnis. |
 | `homeoffice_pauschale` | string | ja |  |  | 6 EUR × ho_tage_eff in EUR |
 | `pendlerpauschale_pro_tag` | string | ja |  |  | 0,38 EUR/km × Entfernung |
 | `pendlerpauschale` | string | ja |  |  | Gesamt-Pendlerpauschale aller Buerotage |
@@ -44,9 +44,9 @@ Beispiel:
 | `anrechenbarer_abzug` | string | ja |  |  | Teil des Gesamtabzugs ueber dem Pauschbetrag: max(gesamtabzug - 1.230, 0) |
 | `steuerersparnis` | string | ja |  |  | Anrechenbarer Abzug × Grenzsteuersatz (nur der Teil ueber dem Arbeitnehmer-Pauschbetrag senkt die Steuer zusaetzlich) |
 | `optimale_ho_tage` | integer | ja |  |  | Anzahl HO-Tage fuer maximalen Abzug |
-| `optimaler_gesamtabzug` | string | ja |  |  |  |
+| `optimaler_gesamtabzug` | string | ja |  |  | Höchster erreichbarer Werbungskostenabzug in EUR (Homeoffice-Pauschale plus Pendlerpauschale) über alle Aufteilungen, vor Abzug des Arbeitnehmer-Pauschbetrags. |
 | `optimaler_anrechenbarer_abzug` | string | ja |  |  | Optimaler Abzug ueber dem Pauschbetrag |
-| `optimale_steuerersparnis` | string | ja |  |  |  |
+| `optimale_steuerersparnis` | string | ja |  |  | Steuerersparnis in EUR bei optimaler Aufteilung = optimaler_anrechenbarer_abzug × grenzsteuersatz. 0, wenn auch das Optimum unter dem Arbeitnehmer-Pauschbetrag bleibt. |
 | `differenz_zu_optimal` | string | ja |  |  | Abzugs-Differenz Optimum minus Eingabe (roher Werbungskosten-Betrag) |
 | `differenz_steuer_zu_optimal` | string |  | "0" |  | Echtes Optimierungspotenzial in EUR Steuerersparnis (optimale minus aktuelle Ersparnis). 0, wenn beide Aufteilungen unter dem § 9a-Pauschbetrag bleiben. |
 | `break_even_km` | string | ja |  |  | Ab dieser km lohnt sich Buerotag mehr (~15,8) |

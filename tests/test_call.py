@@ -94,6 +94,32 @@ SCENARIOS = {
         },
         {},
     ),
+    "/v1/gewerbesteuer": (
+        409,
+        {
+            "success": False,
+            "error": {
+                "code": "GEMEINDE_AMBIGUOUS",
+                "message": (
+                    "'Frankfurt' matches 2 municipalities. "
+                    "Repeat the request with the 8-digit AGS of one of them."
+                ),
+                "details": [
+                    {
+                        "ags": "06412000",
+                        "name": "Frankfurt am Main, kreisfreie Stadt",
+                        "bundesland": "Hessen",
+                    },
+                    {
+                        "ags": "12053000",
+                        "name": "Frankfurt (Oder), kreisfreie Stadt",
+                        "bundesland": "Brandenburg",
+                    },
+                ],
+            },
+        },
+        {},
+    ),
 }
 
 
@@ -176,6 +202,18 @@ def test_mehrdeutige_plz_zeigt_kandidaten_und_nennt_den_weg(gateway, monkeypatch
     assert "07232003" in out
     assert "Baustert" in out
     assert "HTTP 409" in err
+    assert "8-stelligen AGS" in err
+
+
+def test_mehrdeutiger_gemeindename_nennt_die_gemeinde_statt_der_plz(gateway, monkeypatch, capsys):
+    body = '{"gewinn": 100000, "rechtsform": "einzelunternehmen", "gemeinde": "Frankfurt"}'
+    code, out, err = run(monkeypatch, capsys, "POST", "v1/gewerbesteuer", body)
+    assert code == 1
+    assert "06412000" in out
+    assert "Frankfurt (Oder)" in out
+    assert "HTTP 409" in err
+    assert "Gemeindename trifft mehrere Gemeinden" in err
+    assert "PLZ" not in err
     assert "8-stelligen AGS" in err
 
 

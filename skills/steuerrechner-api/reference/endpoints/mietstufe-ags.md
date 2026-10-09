@@ -16,8 +16,8 @@ Liefert die Wohngeld-Mietenstufe (I-VII / 1-7) einer Gemeinde nach der Anlage zu
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `ags` | string | ja |  |  |  |
+| `ags` | string | ja |  |  | 8-stelliger Amtlicher Gemeindeschlüssel; bei Anfrage per PLZ die daraus aufgelöste AGS. |
 | `mietstufe` | integer | ja |  |  | Wohngeld-Mietenstufe I-VII (1-7) |
 | `mietstufe_roman` | string | ja |  |  | Mietenstufe als roemische Ziffer (I-VII) |
 | `gueltig_ab` | string |  | "2023-01-01" |  | WoGV-Fassung gueltig ab |
-| `quelle` | string |  | "wogv_anlage" |  |  |
+| `quelle` | string |  | "wogv_anlage" |  | Quellen-Kennung als fester Text "wogv_anlage" (Anlage zur Wohngeldverordnung). |

@@ -10,12 +10,12 @@ Liefert den gewogenen Durchschnittssatz der Gewerbesteuer in Gemeinden ab 20.000
 
 | Parameter | Ort | Typ | Pflicht | Beschreibung |
 |---|---|---|---|---|
-| `bundesland` | query | string |  | Bundesland-Name (exakt, z.B. 'Baden-Wuerttemberg'). Optional. |
+| `bundesland` | query | string |  | Bundesland-Name (exakt, mit Umlauten, z.B. 'Baden-Württemberg'). Optional. |
 | `jahr` | query | integer |  | Berichtsjahr 2016-2025. Optional. |
 
 ## Antwort: Felder in `data`
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `eintraege` | array<HebesatzAggregatItem> | ja |  |  |  |
-| `quelle` | string |  | "VdF Daten und Fakten Realsteuer-Hebesaetze (Stand 01.09.2025)" |  |  |
+| `eintraege` | array<HebesatzAggregatItem> | ja |  |  | Durchschnittliche Gewerbesteuer-Hebesätze je Bundesland und Jahr (2016 bis 2025), sortiert nach Bundesland und Jahr; optional per bundesland oder jahr gefiltert. |
+| `quelle` | string |  | "VdF Daten und Fakten Realsteuer-Hebesaetze (Stand 01.09.2025)" |  | Quellenangabe als fester Text "VdF Daten und Fakten Realsteuer-Hebesaetze (Stand 01.09.2025)". |

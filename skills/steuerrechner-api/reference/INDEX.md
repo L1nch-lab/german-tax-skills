@@ -1,6 +1,6 @@
 # Endpoint-Index
 
-Erzeugt aus der OpenAPI-Spezifikation (API-Version 2026.51) mit `tools/build_reference.py`.
+Erzeugt aus der OpenAPI-Spezifikation (API-Version 2026.52) mit `tools/build_reference.py`.
 Nicht von Hand bearbeiten.
 
 | Kategorie | Methode | Pfad | Zweck | Referenz |
@@ -79,7 +79,7 @@ Nicht von Hand bearbeiten.
 | Kuendigungsfrist | POST | `/v1/kuendigungsfrist` | Kuendigungsfrist-Rechner (§ 622 BGB) | [endpoints/kuendigungsfrist.md](endpoints/kuendigungsfrist.md) |
 | Kurzarbeitergeld | POST | `/v1/kurzarbeitergeld` | Kurzarbeitergeld-Rechner (§§ 95 ff. SGB III) | [endpoints/kurzarbeitergeld.md](endpoints/kurzarbeitergeld.md) |
 | Lohnkosten-Netto | POST | `/v1/lohnkosten-netto` | Lohnkosten-zu-Netto-Umkehrrechner | [endpoints/lohnkosten-netto.md](endpoints/lohnkosten-netto.md) |
-| Lohnkosten-Netto | POST | `/v1/lohnkosten-netto/batch` | Lohnkosten-Netto-Batch (max 1.000 Mitarbeiter) | [endpoints/lohnkosten-netto-batch.md](endpoints/lohnkosten-netto-batch.md) |
+| Lohnkosten-Netto | POST | `/v1/lohnkosten-netto/batch` | Lohnkosten-Netto-Batch (max 200 Mitarbeiter) | [endpoints/lohnkosten-netto-batch.md](endpoints/lohnkosten-netto-batch.md) |
 | Midijob | POST | `/v1/midijob` | Midijob-Rechner (Uebergangsbereich) | [endpoints/midijob.md](endpoints/midijob.md) |
 | Midijob | POST | `/v1/midijob/batch` | Midijob-Batch (max 1.000 Mitarbeiter) | [endpoints/midijob-batch.md](endpoints/midijob-batch.md) |
 | Mieteinnahmen | POST | `/v1/mieteinnahmen` | Mieteinnahmen versteuern | [endpoints/mieteinnahmen.md](endpoints/mieteinnahmen.md) |

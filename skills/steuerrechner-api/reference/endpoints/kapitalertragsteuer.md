@@ -36,6 +36,6 @@ Beispiel:
 | `netto` | string | ja |  |  | Auszahlbar nach Quellenabzug = Bemessungsgrundlage - Steuer-Summe |
 | `effektivsatz_prozent` | string | ja |  |  | Steuer-Summe / Bemessungsgrundlage in Prozent (4 Nachkommastellen) |
 | `kirchensteuer_satz_prozent` | string | ja |  |  | Verwendeter KiSt-Satz in Prozent (8 / 9 / 0 wenn nicht pflichtig) |
-| `bundesland` | string | ja |  |  |  |
-| `kirchensteuerpflichtig` | boolean | ja |  |  |  |
-| `rechtsgrundlage` | string | ja |  |  |  |
+| `bundesland` | string | ja |  |  | Echo des Bundeslands als voller deutscher Name. Bestimmt nur den Kirchensteuersatz (8 % Bayern und Baden-Württemberg, sonst 9 %). |
+| `kirchensteuerpflichtig` | boolean | ja |  |  | Echo, ob Kirchensteuer einbehalten wird. Bei true greift die Formel KapESt = e / (4 + k), bei false ist kirchensteuer 0. |
+| `rechtsgrundlage` | string | ja |  |  | Fester Text mit den angewendeten Normen aus EStG und SolzG, gleich für jede Anfrage. |

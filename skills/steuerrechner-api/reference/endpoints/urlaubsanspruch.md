@@ -28,9 +28,9 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `arbeitstage_woche` | integer | ja |  |  |  |
+| `arbeitstage_woche` | integer | ja |  |  | Echo der Arbeitstage pro Woche (1–6), auf die der Urlaub umgerechnet wird. Teilzeit-Umrechnung: Vollzeit-Urlaub × arbeitstage_woche / 5. |
 | `jahresurlaub_vollzeit` | number | ja |  |  | Eingabe auf 5-Tage-Basis, gerundet 1 NK |
-| `beschaeftigungsmonate` | integer | ja |  |  |  |
+| `beschaeftigungsmonate` | integer | ja |  |  | Volle Beschäftigungsmonate im Kalenderjahr, auf 0–12 begrenzt. Unter 12 wird gezwölftelt (gezwoelftelt = true), 12 bedeutet ganzes Jahr. |
 | `gezwoelftelt` | boolean | ja |  |  | True wenn § 5 Abs. 1 BUrlG (Zwoelftelung) angewendet |
 | `urlaub_voll` | number | ja |  |  | Vertraglicher Urlaub umgerechnet auf die eigene Woche |
 | `gesetzliches_minimum` | number | ja |  |  | Gesetzliches Minimum fuer diese Arbeitstage-Woche (§ 3 BUrlG, ungerundet) |

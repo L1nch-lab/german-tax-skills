@@ -30,6 +30,6 @@ Berechnet die Vorabpauschale fuer ein volles Kalenderjahr nach §18 InvStG. Beru
 | `teilfreistellung_quote` | string | ja |  |  | Teilfreistellungsquote nach §20 InvStG (0.30 Aktien, 0.15 Misch, ...) |
 | `vorabpauschale_steuerpflichtig` | string | ja |  |  | VAP nach Teilfreistellung – Bemessungsgrundlage fuer Kapitalertragsteuer |
 | `keine_vap_grund` | string |  |  |  | Falls keine VAP anfaellt: 'negativer_basiszins', 'kein_wertzuwachs' oder 'ausschuettungen_decken_basisertrag'. Sonst null. |
-| `fondstyp` | string | ja |  |  |  |
-| `jahr` | integer | ja |  |  |  |
-| `rechtsgrundlage` | string |  | "§18 InvStG, §16 InvStG, §20 InvStG" |  |  |
+| `fondstyp` | string | ja |  |  | Echo des Fondstyps, der die Teilfreistellungsquote bestimmt: aktien_51, misch_25, sonstige, immo_inland oder immo_ausland. |
+| `jahr` | integer | ja |  |  | Kalenderjahr der Vorabpauschale (2018 bis aktuelles Steuerjahr), wählt den Basiszins aus der hinterlegten Reihe. Ein Zufluss im Folgejahr und eine Zwölftelung bei unterjährigem Kauf sind nicht abgebildet. |
+| `rechtsgrundlage` | string |  | "§18 InvStG, §16 InvStG, §20 InvStG" |  | Fester Text mit den angewendeten Normen des InvStG, gleich für jede Anfrage. |

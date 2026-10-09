@@ -19,5 +19,5 @@ Liefert die fuer eine Gemeinde zustaendigen Finanzaemter samt Stammdaten (Adress
 | `ags` | string | ja |  |  | Angefragte Gemeinde-AGS (8-stellig) |
 | `gemeinde_name` | string |  |  |  | Gemeindename laut GemFa-Verzeichnis |
 | `stand` | string | ja |  |  | Export-Stand des BZSt-GemFa-Datenbestands (YYYY-MM-DD) |
-| `hinweis` | string |  | "Zustaendigkeit nach dem GemFa-Verzeichnis des BZSt (Gemeinde-Finanzamt-Zuordnung). Bei mehreren Finanzaemtern je Gemeinde (z. B. Berlin) haengt die Zustaendigkeit von Bezirk und Aufgabe ab – massgeblich ist der Steuerbescheid bzw. die ELSTER-Finanzamtssuche." |  |  |
-| `finanzaemter` | array<FinanzamtItem> | ja |  |  |  |
+| `hinweis` | string |  | "Zustaendigkeit nach dem GemFa-Verzeichnis des BZSt (Gemeinde-Finanzamt-Zuordnung). Bei mehreren Finanzaemtern je Gemeinde (z. B. Berlin) haengt die Zustaendigkeit von Bezirk und Aufgabe ab – massgeblich ist der Steuerbescheid bzw. die ELSTER-Finanzamtssuche." |  | Fester Hinweistext zur Zuständigkeit nach dem GemFa-Verzeichnis des BZSt; bei mehreren Finanzämtern je Gemeinde entscheiden Bezirk und Aufgabe. |
+| `finanzaemter` | array<FinanzamtItem> | ja |  |  | Alle Finanzämter, die dem Gemeindeschlüssel zugeordnet sind, sortiert nach BuFa-Nummer; meist eins, in Großstädten mehrere (Berlin: 17). |

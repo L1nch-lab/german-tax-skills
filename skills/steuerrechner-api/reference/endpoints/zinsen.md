@@ -17,5 +17,5 @@ Effektivzinssaetze aus der MFI-Zinsstatistik der Deutschen Bundesbank (Neugescha
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
 | `stand` | string | ja |  |  | Stand des Bundesbank-Exports (YYYY-MM-DD) |
-| `hinweis` | string |  | "Effektivzinssaetze der MFI-Zinsstatistik der Deutschen Bundesbank (Neugeschaeft Banken DE, private Haushalte, volumengewichtete Durchschnitte). Individuelle Kredit-/Anlagekonditionen weichen ab." |  |  |
-| `serien` | array<ZinsSerie> | ja |  |  |  |
+| `hinweis` | string |  | "Effektivzinssaetze der MFI-Zinsstatistik der Deutschen Bundesbank (Neugeschaeft Banken DE, private Haushalte, volumengewichtete Durchschnitte). Individuelle Kredit-/Anlagekonditionen weichen ab." |  | Fester Hinweistext: Effektivzinssätze der MFI-Zinsstatistik der Bundesbank (Neugeschäft, private Haushalte, volumengewichtet); individuelle Konditionen weichen ab. |
+| `serien` | array<ZinsSerie> | ja |  |  | Zinsreihen, sortiert nach Serien-Code: ohne Parameter alle Reihen mit nur dem jüngsten Monatswert, mit ?serie= nur diese Reihe mit voller Monatshistorie. |

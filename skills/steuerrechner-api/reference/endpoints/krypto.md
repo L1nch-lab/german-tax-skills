@@ -41,8 +41,8 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `gewinn` | string | ja |  |  |  |
+| `gewinn` | string | ja |  |  | Veräußerungsgewinn der Transaktion in EUR = verkaufspreis − kaufpreis − gebuehren_kauf − gebuehren_verkauf, gerundet auf 2 Nachkommastellen; negativ bei Verlust. |
 | `haltefrist` | KryptoHaltefristInfo |  |  |  | Nur bei Spot – bei Futures null |
 | `steuer` | KryptoSteuerSpot \| KryptoSteuerFutures | ja |  |  | Spot- oder Futures-Steuer-Aufschluesselung |
-| `transaktionsart` | string | ja |  |  |  |
-| `zusammenfassung` | KryptoZusammenfassung | ja |  |  |  |
+| `transaktionsart` | string | ja |  |  | Echo der Transaktionsart: 'spot' (privates Veräußerungsgeschäft, steuer ist KryptoSteuerSpot) oder 'futures' (pauschale KapESt, steuer ist KryptoSteuerFutures, haltefrist null). |
+| `zusammenfassung` | KryptoZusammenfassung | ja |  |  | Kurzfassung mit gewinn, steuer_gesamt, netto_gewinn, effektiver_steuersatz und ampel, unabhängig von der Transaktionsart aus dem steuer-Block übernommen. |

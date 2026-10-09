@@ -4,7 +4,7 @@
 
 Kategorie: GKV-Zusatzbeitrag
 
-Liefert den Zusatzbeitragssatz einer GKV-Kasse. Lookup via IK-Nummer (echte oder synthetischer Slug) ODER via Name-Substring (fuzzy). Optional Stichtag fuer historischen Lookup. Coverage 2021-10 bis 2026-05.
+Liefert den Zusatzbeitragssatz einer GKV-Kasse. Lookup via IK-Nummer (echte oder synthetischer Slug) ODER via Name-Substring (fuzzy). Optional Stichtag fuer historischen Lookup. Coverage ab 2021-10.
 
 ## Parameter
 
@@ -18,8 +18,8 @@ Liefert den Zusatzbeitragssatz einer GKV-Kasse. Lookup via IK-Nummer (echte oder
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `ik_nummer` | string | ja |  |  |  |
-| `name` | string | ja |  |  |  |
+| `ik_nummer` | string | ja |  |  | Kennung der gefundenen Kasse: synthetischer Slug aus dem Namen (z. B. "techniker-krankenkasse"); bei Suche per name die ID des ersten Treffers. |
+| `name` | string | ja |  |  | Name der Kasse aus der Kassen-Tabelle. |
 | `zusatzbeitrag_prozent` | string | ja |  |  | Zusatzbeitragssatz in Prozent |
 | `snapshot_datum` | string | ja |  |  | Aufnahmedatum des PDF-Snapshots |
 | `quelle_url` | string | ja |  |  | Quelle (gkv:current oder wayback:TIMESTAMP) |

@@ -35,20 +35,20 @@ Beispiel:
 |---|---|---|---|---|---|
 | `mindeststundensatz` | string | ja |  |  | Kostendeckender Stundensatz |
 | `empfohlener_stundensatz` | string | ja |  |  | +20 % Puffer |
-| `bruttobedarf_jahr` | string | ja |  |  |  |
-| `betriebsausgaben_jahr` | string | ja |  |  |  |
-| `gewinn` | string | ja |  |  |  |
+| `bruttobedarf_jahr` | string | ja |  |  | Nötiger Jahresumsatz in EUR vor Steuern, Sozialversicherung und Betriebsausgaben, iterativ so bestimmt, dass netto_ergebnis das Wunsch-Netto × 12 auf etwa 10 EUR trifft. Basis von mindeststundensatz. |
+| `betriebsausgaben_jahr` | string | ja |  |  | Betriebsausgaben pro Jahr in EUR = Eingabe betriebsausgaben_monat × 12. |
+| `gewinn` | string | ja |  |  | Jahresgewinn in EUR = bruttobedarf_jahr − betriebsausgaben_jahr, nicht negativ. Bemessungsgrundlage für ESt, Gewerbesteuer, KV/PV und Altersvorsorge. |
 | `est` | integer | ja |  |  | Einkommensteuer (gerundet) |
-| `soli` | string | ja |  |  |  |
-| `kist` | string | ja |  |  |  |
+| `soli` | string | ja |  |  | Solidaritätszuschlag in EUR auf die Einkommensteuer (Einzelveranlagung, Tarif 2026). Berechnet auf est vor der Gewerbesteuer-Anrechnung. |
+| `kist` | string | ja |  |  | Kirchensteuer in EUR, 8 % oder 9 % der est je nach bundesland; 0 ohne Kirchenmitgliedschaft. |
 | `kv_pv` | string | ja |  |  | Freiwillige KV+PV-Beitraege/Jahr |
 | `gewerbesteuer` | string | ja |  |  | Festgesetzte Gewerbesteuer in EUR. ⚠️ Das ist NICHT die Belastung – sie wird nach §35 EStG auf die Einkommensteuer angerechnet, siehe die beiden Felder darunter. 0 bei Freiberuflern und bei Gewinn unterhalb des Freibetrags. |
 | `est_anrechnung` | string |  | "0" |  | Anrechnung auf die Einkommensteuer nach §35 Abs. 1 S. 1 Nr. 1 EStG: das Vierfache des Steuermessbetrags, gedeckelt auf die tatsaechlich zu zahlende Gewerbesteuer (S. 5) und auf die tarifliche Einkommensteuer als Ermaessigungshoechstbetrag (S. 2). |
 | `gewerbesteuer_effektiv` | string |  | "0" |  | Gewerbesteuer nach Anrechnung – das ist der Betrag, der die Kalkulation wirklich belastet und der in den Stundensatz eingeht. Beim Musterhebesatz 400 % regelmaessig 0. |
 | `altersvorsorge` | string | ja |  |  | 10 % vom Gewinn pauschal |
-| `netto_ergebnis` | string | ja |  |  |  |
-| `abrechnungsfaehige_stunden` | string | ja |  |  |  |
-| `abrechnungsfaehige_tage` | string | ja |  |  |  |
-| `arbeitstage` | integer | ja |  |  |  |
+| `netto_ergebnis` | string | ja |  |  | Jährliches Netto in EUR = gewinn − est − soli − kist − gewerbesteuer_effektiv − kv_pv − altersvorsorge. Liegt nach der Iteration nahe am Wunsch-Netto × 12. |
+| `abrechnungsfaehige_stunden` | string | ja |  |  | Abrechenbare Stunden pro Jahr = abrechnungsfaehige_tage × stunden_pro_tag, mindestens 1, gerundet auf 1 Nachkommastelle. Divisor für die Stundensätze. |
+| `abrechnungsfaehige_tage` | string | ja |  |  | Abrechenbare Tage pro Jahr = arbeitstage × billable_ratio, gerundet auf 1 Nachkommastelle. |
+| `arbeitstage` | integer | ja |  |  | Verfügbare Arbeitstage pro Jahr = 365 − 104 Wochenendtage − 10 Feiertage − urlaubstage − 10 Krankheitstage, mindestens 1. |
 | `marktvergleich` | string | ja |  |  | 'unter', 'im' oder 'ueber' Marktdurchschnitt |
 | `durchschnitt_markt` | string | ja |  |  | 104 EUR Marktdurchschnitt |

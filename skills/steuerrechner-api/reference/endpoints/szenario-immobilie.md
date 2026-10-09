@@ -22,14 +22,14 @@ Aggregiert Grunderwerbsteuer, laufende Jahres-Grundsteuer und Kaufnebenkosten (N
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `kaufpreis` | string | ja |  |  |  |
-| `grunderwerbsteuer` | string | ja |  |  |  |
-| `grunderwerbsteuer_prozent` | string | ja |  |  |  |
-| `notar_schaetzung` | string | ja |  |  |  |
-| `grundbuch_schaetzung` | string | ja |  |  |  |
-| `makler_schaetzung` | string | ja |  |  |  |
-| `kaufnebenkosten_gesamt` | string | ja |  |  |  |
-| `gesamtkosten` | string | ja |  |  |  |
-| `grundsteuer_jahr` | string | ja |  |  |  |
-| `grundsteuer_modell` | string | ja |  |  |  |
-| `hinweise` | array<string> | ja |  |  |  |
+| `kaufpreis` | string | ja |  |  | Kaufpreis der Immobilie in EUR aus der Anfrage. |
+| `grunderwerbsteuer` | string | ja |  |  | Grunderwerbsteuer in EUR = Kaufpreis × Steuersatz des Bundeslands, aus dem Grunderwerbsteuer-Rechner. |
+| `grunderwerbsteuer_prozent` | string | ja |  |  | Grunderwerbsteuersatz des Bundeslands in Prozent (z. B. 3.5 = 3,5 %). |
+| `notar_schaetzung` | string | ja |  |  | Pauschale Schätzung der Notarkosten in EUR: 1,5 % des Kaufpreises. Keine Gebührenberechnung. |
+| `grundbuch_schaetzung` | string | ja |  |  | Pauschale Schätzung der Grundbuchkosten in EUR: 0,5 % des Kaufpreises. |
+| `makler_schaetzung` | string | ja |  |  | Maklerprovision in EUR: 3,57 % des Kaufpreises (fester Default, im Bundle nicht einstellbar), wenn mit_makler=true, sonst 0. |
+| `kaufnebenkosten_gesamt` | string | ja |  |  | Summe der Kaufnebenkosten in EUR: Grunderwerbsteuer + Notar + Grundbuch + Makler. |
+| `gesamtkosten` | string | ja |  |  | Kaufpreis plus Kaufnebenkosten in EUR. Ohne laufende Grundsteuer. |
+| `grundsteuer_jahr` | string | ja |  |  | Geschätzte jährliche Grundsteuer in EUR nach dem Modell des Bundeslands, mit vereinfachten Defaults (z. B. Lagefaktor 1 in HE/NI, Wohnlage normal in HH). 0, wenn grundstuecksflaeche_m2 0 ist oder die Modellrechnung einen Fehler wirft (Grund dann in hinweise). |
+| `grundsteuer_modell` | string | ja |  |  | Name des Grundsteuermodells des Bundeslands ("bundesmodell", "bw_bodenwert", "by_flaechenmodell", "he_flaechen_faktor", "hh_wohnlage", "ni_flaechen_lage"). Wird auch gesetzt, wenn keine Grundsteuer berechnet wurde. |
+| `hinweise` | array<string> | ja |  |  | Liste fester Texte zum Bundle und zu den Pauschalschätzungen, plus ein Hinweis, wenn die Grundsteuer mangels Grundstücksfläche nicht berechnet wurde, oder mit dem Grund, wenn die Modellrechnung einen Fehler wirft. |

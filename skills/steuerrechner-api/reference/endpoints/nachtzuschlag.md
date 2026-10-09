@@ -47,18 +47,18 @@ Beispiel:
 | `grundlohn_geschaetzt` | boolean | ja |  |  | True wenn der Grundlohn aus monatsbrutto/wochenstunden umgerechnet wurde |
 | `grundlohn_steuer` | string | ja |  |  | Fuer die Steuerfreiheit angesetzter Grundlohn (max 50 EUR, § 3b Abs. 2 EStG) |
 | `grundlohn_sv` | string | ja |  |  | Fuer die Beitragsfreiheit angesetzter Grundlohn (max 25 EUR, § 1 SvEV) |
-| `steuerkappung_greift` | boolean | ja |  |  |  |
-| `svkappung_greift` | boolean | ja |  |  |  |
+| `steuerkappung_greift` | boolean | ja |  |  | True, wenn der Grundlohn über der steuerlichen Kappungsgrenze von 50 EUR je Stunde liegt; dann ist der auf den Mehrbetrag entfallende Zuschlag steuerpflichtig. |
+| `svkappung_greift` | boolean | ja |  |  | True, wenn der Grundlohn über der SV-Kappungsgrenze von 25 EUR je Stunde liegt; dann ist der auf den Mehrbetrag entfallende Zuschlag beitragspflichtig. |
 | `positionen` | array<NachtzuschlagPosition> | ja |  |  | Eine Zeile je Zuschlagsart mit Stunden > 0 |
-| `stunden_gesamt` | string | ja |  |  |  |
+| `stunden_gesamt` | string | ja |  |  | Summe der zuschlagsberechtigten Stunden im Monat über alle Zuschlagsarten mit Stunden > 0. |
 | `zuschlag_gesamt` | string | ja |  |  | Gezahlter Zuschlag gesamt pro Monat |
-| `steuerfrei_gesamt` | string | ja |  |  |  |
-| `steuerpflichtig_gesamt` | string | ja |  |  |  |
-| `beitragsfrei_gesamt` | string | ja |  |  |  |
-| `beitragspflichtig_gesamt` | string | ja |  |  |  |
+| `steuerfrei_gesamt` | string | ja |  |  | Steuerfreier Teil aller Zuschläge in EUR pro Monat, berechnet mit dem auf höchstens 50 EUR/h gekappten Grundlohn. |
+| `steuerpflichtig_gesamt` | string | ja |  |  | Steuerpflichtiger Teil aller Zuschläge in EUR pro Monat (zuschlag_gesamt minus steuerfrei_gesamt); nur größer 0 bei Grundlohn über 50 EUR/h. |
+| `beitragsfrei_gesamt` | string | ja |  |  | Beitragsfreier Teil aller Zuschläge in EUR pro Monat, berechnet mit dem auf höchstens 25 EUR/h gekappten Grundlohn. |
+| `beitragspflichtig_gesamt` | string | ja |  |  | Beitragspflichtiger Teil aller Zuschläge in EUR pro Monat (zuschlag_gesamt minus beitragsfrei_gesamt); größer 0 bei Grundlohn über 25 EUR/h. |
 | `nur_sv_pflichtig` | string | ja |  |  | Steuerfrei, aber beitragspflichtig – der Bereich zwischen den beiden Kappungsgrenzen (Grundlohn 25-50 EUR/h) |
 | `nacht_kernzeit_satz` | string | ja |  |  | Angewendeter Satz fuer 0-4 Uhr (40 oder 25) |
-| `schicht_vor_mitternacht` | boolean | ja |  |  |  |
+| `schicht_vor_mitternacht` | boolean | ja |  |  | Echo des Eingabeschalters: True, wenn die Nachtarbeit vor 0 Uhr aufgenommen wurde. Nur dann gilt für 0 bis 4 Uhr der Satz von 40 statt 25 Prozent. |
 | `netto_ausgewiesen` | boolean | ja |  |  | True wenn der Netto-Effekt berechnet wurde |
 | `steuer_auf_zuschlag` | string | ja |  |  | Lohnsteuer+Soli+KiSt auf den steuerpflichtigen Teil (Differenzrechnung) |
 | `sv_auf_zuschlag` | string | ja |  |  | SV-Beitraege auf den beitragspflichtigen Teil (Differenzrechnung) |

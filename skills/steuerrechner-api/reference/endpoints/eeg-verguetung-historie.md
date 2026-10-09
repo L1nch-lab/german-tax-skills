@@ -18,8 +18,8 @@ Liefert alle bekannten Tarif-Eintraege fuer eine kWp-Klasse + Anlagentyp + Einsp
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `anlagentyp` | string | ja |  |  |  |
-| `einspeisung` | string | ja |  |  |  |
-| `kw_klasse_min` | string | ja |  |  |  |
-| `kw_klasse_max` | string | ja |  |  |  |
-| `eintraege` | array<EegHistorieItem> | ja |  |  |  |
+| `anlagentyp` | string | ja |  |  | Angefragter Anlagentyp: "pv_dach_wohngebaeude" oder "pv_dach_sonstige". |
+| `einspeisung` | string | ja |  |  | Angefragte Einspeiseart: "teil" oder "voll". Die Reihe enthält nur Tarife, die in der Datenbank unter dieser Einspeiseart geführt sind. |
+| `kw_klasse_min` | string | ja |  |  | Untergrenze (exklusiv) des kWp-Bereichs, in dem jeder Eintrag der Reihe gilt: die größte Klassen-Untergrenze aller Einträge. |
+| `kw_klasse_max` | string | ja |  |  | Obergrenze (inklusiv) des kWp-Bereichs, in dem jeder Eintrag der Reihe gilt: die kleinste Klassen-Obergrenze aller Einträge; null = nach oben offen. |
+| `eintraege` | array<EegHistorieItem> | ja |  |  | Alle Tarifeinträge, deren kWp-Klasse den angefragten kWp-Wert enthält, aufsteigend nach Beginn des Inbetriebnahme-Intervalls. |

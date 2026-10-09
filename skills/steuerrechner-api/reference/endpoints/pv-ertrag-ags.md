@@ -27,5 +27,5 @@ Jaehrlicher Standard-PV-Ertrag am geografischen Mittelpunkt der Gemeinde aus PVG
 | `lon` | number | ja |  |  | Gemeinde-Mittelpunkt (GV100), Laengengrad |
 | `radiation_db` | string | ja |  |  | PVGIS-Strahlungsdatenbank, z. B. PVGIS-SARAH3 |
 | `stand` | string | ja |  |  | Abrufdatum des PVGIS-Batches (YYYY-MM-DD) |
-| `hinweis` | string |  | "Standard-Vergleichswert am Gemeinde-Mittelpunkt (PVGIS 5.3, EU-Kommission/JRC). Der Ertrag einer realen Anlage haengt von Dachneigung, Ausrichtung, Verschattung und Anlagentechnik ab. Einspeiseverguetung: siehe /v1/eeg-verguetung." |  |  |
-| `bundesweit` | PvErtragBundesweit | ja |  |  |  |
+| `hinweis` | string |  | "Standard-Vergleichswert am Gemeinde-Mittelpunkt (PVGIS 5.3, EU-Kommission/JRC). Der Ertrag einer realen Anlage haengt von Dachneigung, Ausrichtung, Verschattung und Anlagentechnik ab. Einspeiseverguetung: siehe /v1/eeg-verguetung." |  | Fester Hinweistext: Standard-Vergleichswert am Gemeinde-Mittelpunkt (PVGIS 5.3); der Ertrag einer realen Anlage hängt von Dach, Ausrichtung, Verschattung und Technik ab. |
+| `bundesweit` | PvErtragBundesweit | ja |  |  | Einordnung der Gemeinde in die Werte aller Gemeinden der Tabelle: Anzahl, Minimum, Median, Maximum und Perzentil des Jahresertrags. |

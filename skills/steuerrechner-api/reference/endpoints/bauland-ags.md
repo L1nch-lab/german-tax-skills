@@ -21,4 +21,4 @@ Zeitreihe 1995-2024 der Statistik der Kaufwerte fuer Bauland (GENESIS 61511-01-0
 | `eintraege` | array<BaulandJahrItem> | ja |  |  | Kreis-Zeitreihe 1995-2024, je Jahr 2 Zeilen (baureif + insgesamt) |
 | `vergleich` | BaulandVergleich |  |  |  | Einordnung gegen Land + Bund (baureifes Land) |
 | `quelle` | string | ja |  |  | Datenquelle (GENESIS/Regionalstatistik 61511-01-03-4) |
-| `hinweis` | string |  | "Durchschnittswerte tatsaechlicher Verkaufsfaelle (Statistik der Kaufwerte fuer Bauland). In kleinen Kreisen schwanken die Werte stark mit der Fallzahl; gesperrte oder verkaufslose Jahre sind null. Kein Bodenrichtwert und kein Ersatz fuer ein Verkehrswertgutachten." |  |  |
+| `hinweis` | string |  | "Durchschnittswerte tatsaechlicher Verkaufsfaelle (Statistik der Kaufwerte fuer Bauland). In kleinen Kreisen schwanken die Werte stark mit der Fallzahl; gesperrte oder verkaufslose Jahre sind null. Kein Bodenrichtwert und kein Ersatz fuer ein Verkehrswertgutachten." |  | Fester Hinweistext: Durchschnittswerte tatsächlicher Verkaufsfälle; gesperrte oder verkaufslose Jahre sind null, kein Bodenrichtwert und kein Ersatz für ein Verkehrswertgutachten. |

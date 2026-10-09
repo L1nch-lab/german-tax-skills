@@ -17,8 +17,8 @@ Berechnet die Grundsteuer nach dem fuer das Bundesland gueltigen Modell: Bundesm
 | `wohnflaeche_m2` | number |  | "0" |  | Wohnflaeche in m² (Bundesmodell) |
 | `bodenrichtwert_eur_m2` | number |  | "0" |  | Bodenrichtwert Stichtag 01.01.2022 (Bundesmodell/BW) |
 | `bodenrichtwert_lage_eur_m2` | number |  | "0" |  | Bodenrichtwert der Lage (Hessen/Niedersachsen) |
-| `bodenrichtwert_gemeinde_durchschnitt_eur_m2` | number |  | "0" |  | Gemeinde-Durchschnittsbodenrichtwert (Hessen) |
-| `bodenrichtwert_landesdurchschnitt_eur_m2` | number |  | "0" |  | Landesdurchschnitts-Bodenrichtwert (Niedersachsen) |
+| `bodenrichtwert_gemeinde_durchschnitt_eur_m2` | number |  | "0" |  | Durchschnittsbodenwert der Gemeinde (Hessen § 7 HGrStG, Niedersachsen § 5 NGrStG: Median der Bodenrichtwerte der Gemeinde) |
+| `bodenrichtwert_landesdurchschnitt_eur_m2` | number |  | "0" |  | Veraltet seit 2026.52. Niedersachsen rechnet mit dem Durchschnittsbodenwert der Gemeinde; ist bodenrichtwert_gemeinde_durchschnitt_eur_m2 leer, wird dieser Wert als solcher verwendet. |
 | `mietniveaustufe` | integer |  | 3 |  | Mietniveaustufe 1-7 nach MietNEinV (nur Bundesmodell) |
 | `nutzungsart` | enum |  | "wohnen" | wohnen, gemischt, gewerbe, unbebaut, landwirtschaft | Nutzungsart (nur Bundesmodell) |
 | `ueberwiegend_wohnen` | boolean |  | true |  | True bei ueberwiegender Wohnnutzung (BW/BY/HE/HH/NI) |
@@ -43,25 +43,25 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `bundesland` | string | ja |  |  |  |
+| `bundesland` | string | ja |  |  | Bundesland aus der Anfrage. Bestimmt das Rechenmodell (Bundesmodell oder eines der Landesmodelle BW, BY, HE, HH, NI). |
 | `modell` | string | ja |  |  | 'bundesmodell' \| 'bw_bodenwert' \| 'by_flaechenmodell' \| 'he_flaechen_faktor' \| 'hh_wohnlage' \| 'ni_flaechen_lage' |
 | `grundsteuerwert` | string |  |  |  | Grundsteuerwert in EUR (nur Bundesmodell und BW) |
 | `messbetrag` | string | ja |  |  | Steuermessbetrag (EUR bei Flaechenmodellen) |
 | `steuermesszahl_promille` | string |  |  |  | Steuermesszahl in ‰ (nur Bundesmodell und BW) |
-| `hebesatz_prozent` | string | ja |  |  |  |
+| `hebesatz_prozent` | string | ja |  |  | Kommunaler Grundsteuer-Hebesatz in Prozent, wie übergeben (490 = 490 %). Grundsteuer = Messbetrag × Hebesatz / 100. |
 | `grundsteuer_jahr` | string | ja |  |  | Jahres-Grundsteuer in EUR |
-| `jahresrohertrag` | string |  |  |  |  |
-| `reinertrag` | string |  |  |  |  |
-| `kapitalisierter_reinertrag` | string |  |  |  |  |
-| `abgezinster_bodenwert` | string |  |  |  |  |
-| `grundmiete_eur_m2` | string |  |  |  |  |
-| `mietniveaustufe` | integer |  |  |  |  |
-| `nutzungsart` | string |  |  |  |  |
-| `aequivalenzbetrag_grund` | string |  |  |  |  |
-| `aequivalenzbetrag_gebaeude` | string |  |  |  |  |
-| `lagefaktor` | string |  |  |  |  |
-| `wohnlage` | string |  |  |  |  |
-| `ueberwiegend_wohnen` | boolean |  |  |  |  |
-| `ermaessigung_prozent` | string |  |  |  |  |
-| `baudenkmal` | boolean |  |  |  |  |
-| `hinweise` | array<string> | ja |  |  |  |
+| `jahresrohertrag` | string |  |  |  | Nur Bundesmodell: Jahresrohertrag in EUR = Wohnfläche × Grundmiete (EUR/m² und Monat) × 12. Sonst null. |
+| `reinertrag` | string |  |  |  | Nur Bundesmodell: Jahresrohertrag in EUR abzüglich pauschaler Bewirtschaftungskosten (23 % Wohnen, 19 % bei nutzungsart "gewerbe"). Sonst null. |
+| `kapitalisierter_reinertrag` | string |  |  |  | Nur Bundesmodell: Reinertrag × fester Vervielfältiger 20 in EUR. Vereinfachung statt Liegenschaftszins und Restnutzungsdauer. Sonst null. |
+| `abgezinster_bodenwert` | string |  |  |  | Nur Bundesmodell: Grundstücksfläche × Bodenrichtwert × pauschaler Faktor 0,45 in EUR. Vereinfachte Näherung, keine echte Abzinsung. Sonst null. |
+| `grundmiete_eur_m2` | string |  |  |  | Nur Bundesmodell: angesetzte monatliche Grundmiete in EUR/m², vereinfacht aus einem Basiswert je Bundesland × Faktor der Mietniveaustufe. Sonst null. |
+| `mietniveaustufe` | integer |  |  |  | Nur Bundesmodell: verwendete Mietniveaustufe 1 bis 7 (3 = Normalstufe, Default). Sonst null. |
+| `nutzungsart` | string |  |  |  | Nur Bundesmodell: verwendete Nutzungsart ("wohnen", "gemischt", "gewerbe", "unbebaut", "landwirtschaft"). Nur "gewerbe" ändert Bewirtschaftungskosten und Messzahl, alle anderen rechnen wie Wohnen. Sonst null. |
+| `aequivalenzbetrag_grund` | string |  |  |  | Nur Flächenmodelle (BY, HE, HH, NI): Grundstücksfläche × 0,04 EUR/m² in EUR, vor Lagefaktor. Sonst null. |
+| `aequivalenzbetrag_gebaeude` | string |  |  |  | Nur Flächenmodelle (BY, HE, HH, NI): Gebäudefläche × 0,50 EUR/m² × Ermäßigungsfaktor in EUR (Wohnen 0,7; BY zusätzlich Denkmal/sozialer Wohnungsbau; HH Wohnlage), vor Lagefaktor. Sonst null. |
+| `lagefaktor` | string |  |  |  | Nur Hessen und Niedersachsen: (Bodenrichtwert Lage / Vergleichs-Bodenrichtwert) hoch 0,3, im Code auf 0,5 bis 1,5 begrenzt und auf 4 Stellen gerundet. Multipliziert die Summe beider Äquivalenzbeträge. Sonst null. |
+| `wohnlage` | string |  |  |  | Nur Hamburg: verwendete Wohnlage "normal" oder "gut". Wirkt nur bei ueberwiegend_wohnen=true. Sonst null. |
+| `ueberwiegend_wohnen` | boolean |  |  |  | Echo des Eingabeflags in den Landesmodellen (BW, BY, HE, HH, NI). Bei true wird der Wohnabschlag angewandt. Beim Bundesmodell null, weil es das Flag nicht verwendet; dort steuert nutzungsart die Messzahl. |
+| `ermaessigung_prozent` | string |  |  |  | Nur Baden-Württemberg: Summe der Messzahl-Ermäßigungen in Prozentpunkten (Wohnen 30, Förderung 25, Kulturdenkmal 10), bezogen auf die Messzahl 1,30 ‰. Sonst null. |
+| `baudenkmal` | boolean |  |  |  | Echo des Denkmal-Flags beim Bundesmodell, in Baden-Württemberg und Bayern. In Hessen, Hamburg und Niedersachsen null, dort ist das Feld keine Eingabe. |
+| `hinweise` | array<string> | ja |  |  | Liste von Texten: zuerst vier feste Disclaimer (Orientierungshilfe, anhängige Verfahren, Übernachweis, keine Beratung), danach modellspezifische Hinweise wie angewandte Abschläge oder Lagefaktor. |

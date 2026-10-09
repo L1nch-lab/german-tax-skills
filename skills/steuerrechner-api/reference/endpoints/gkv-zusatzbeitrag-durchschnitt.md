@@ -16,6 +16,6 @@ Durchschnitt ueber alle PDF-Snapshots im angegebenen Jahr. Hinweis: nicht gewich
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `jahr` | integer | ja |  |  |  |
+| `jahr` | integer | ja |  |  | Angefragtes Berichtsjahr (Query-Parameter jahr), auf dessen Snapshots der Durchschnitt beruht. |
 | `durchschnitt_prozent` | string | ja |  |  | Ungewichteter Mittelwert aller Snapshots |
 | `snapshot_count` | integer | ja |  |  | Anzahl Snapshots im Jahr |

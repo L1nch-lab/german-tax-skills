@@ -16,7 +16,7 @@ Liefert den am Stichtag gueltigen Basiszinssatz (juengster Eintrag <= Stichtag).
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `stichtag_requested` | string | ja |  |  |  |
+| `stichtag_requested` | string | ja |  |  | Der angefragte Stichtag aus dem Pfad (ISO-Datum); frühestens 2002-01-01, sonst 400. |
 | `gueltig_ab` | string | ja |  |  | Geltungsbeginn des verwendeten Satzes |
-| `satz_prozent` | string | ja |  |  |  |
-| `rechtsgrundlage` | string |  | "§247 Abs. 1 Satz 1 BGB" |  |  |
+| `satz_prozent` | string | ja |  |  | Basiszinssatz in Prozent, der am Stichtag galt (jüngster Eintrag mit Geltungsbeginn <= Stichtag); kann negativ sein. |
+| `rechtsgrundlage` | string |  | "§247 Abs. 1 Satz 1 BGB" |  | Rechtsgrundlage als fester Text "§247 Abs. 1 Satz 1 BGB". |

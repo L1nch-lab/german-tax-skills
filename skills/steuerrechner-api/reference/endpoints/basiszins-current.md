@@ -13,4 +13,4 @@ Liefert den juengsten Basiszinssatz aus der halbjaehrlich gepflegten Reihe (Bund
 | `stichtag` | string | ja |  |  | Geltungsbeginn |
 | `satz_prozent` | string | ja |  |  | Basiszinssatz in Prozent |
 | `naechste_anpassung_erwartet` | string | ja |  |  | Naechster halbjaehrlicher Anpassungstermin (1.1. oder 1.7.) |
-| `rechtsgrundlage` | string |  | "§247 Abs. 1 Satz 1 BGB" |  |  |
+| `rechtsgrundlage` | string |  | "§247 Abs. 1 Satz 1 BGB" |  | Rechtsgrundlage des Satzes als fester Text "§247 Abs. 1 Satz 1 BGB". |

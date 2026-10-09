@@ -23,7 +23,7 @@ Berechnet die monatliche Rentenluecke aus heutigem Netto, gewuenschtem Bedarf im
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
 | `bedarf_monat` | string | ja |  |  | Gewuenschter Alters-Bedarf/Monat in EUR |
-| `rente_netto` | string | ja |  |  | Geschaetzte Netto-Rente (Brutto x pauschaler Netto-Faktor) |
+| `rente_netto` | string | ja |  |  | Geschaetzte Netto-Rente in EUR/Monat: rente_brutto nach KV, PV und Steuer (Werte 2026, Rentenbeginn = 2026 + jahre_bis_rente, Annahmen wie /v1/rente). Bis 2026.51 pauschal 85 %. |
 | `luecke_monat` | string | ja |  |  | Monatliche Rentenluecke in EUR (>= 0) |
 | `keine_luecke` | boolean | ja |  |  | True wenn die Rente den Bedarf deckt |
 | `kapitalbedarf` | string | ja |  |  | Kapitalbedarf = Luecke x 12 x Entnahmejahre (ohne Verzinsung der Entnahme) |

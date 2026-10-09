@@ -17,4 +17,4 @@ Schlaegt Institutionskennzeichen (IK) im offiziellen BAS-Verzeichnis nach. Looku
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `eintraege` | array<GkvIkVerzeichnisItem> | ja |  |  |  |
+| `eintraege` | array<GkvIkVerzeichnisItem> | ja |  |  | Treffer im IK-Verzeichnis: genau ein Eintrag bei Suche per ik, sonst bis zu 20 Namenstreffer, alphabetisch sortiert. |

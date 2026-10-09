@@ -28,10 +28,10 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `bisheriger_umsatz` | string | ja |  |  |  |
-| `aktueller_monat` | integer | ja |  |  |  |
-| `vorjahresumsatz` | string | ja |  |  |  |
-| `durchschnitt_monat` | string | ja |  |  |  |
+| `bisheriger_umsatz` | string | ja |  |  | Echo des Umsatzes im laufenden Jahr bis einschließlich aktueller_monat in EUR. Wird gegen die 100.000-EUR-Grenze geprüft. |
+| `aktueller_monat` | integer | ja |  |  | Echo des aktuellen Monats (1 = Januar bis 12 = Dezember), Divisor für durchschnitt_monat. |
+| `vorjahresumsatz` | string | ja |  |  | Echo des Gesamtumsatzes im Vorjahr in EUR. Wird gegen die 25.000-EUR-Grenze geprüft. |
+| `durchschnitt_monat` | string | ja |  |  | Durchschnittlicher Monatsumsatz in EUR = bisheriger_umsatz / aktueller_monat. Grundlage von hochrechnung und warnmonat. |
 | `hochrechnung` | string | ja |  |  | Jahres-Hochrechnung aus bisherigem Umsatz |
 | `restpuffer_laufend` | string | ja |  |  | Verbleibend bis 100.000 EUR-Grenze |
 | `restpuffer_vorjahr` | string | ja |  |  | Verbleibend bis 25.000 EUR-Grenze |
@@ -41,4 +41,4 @@ Beispiel:
 | `warnmonat` | integer |  |  |  | Monat (1-12) ab dem 100k erreicht wird |
 | `warnmonat_name` | string |  |  |  | Deutscher Monatsname |
 | `verbleibende_monate` | string |  |  |  | Bis Grenze-Erreichen |
-| `empfehlung` | string | ja |  |  |  |
+| `empfehlung` | string | ja |  |  | Deutscher Hinweistext in Du-Form zum Status (Vorjahr überschritten, laufendes Jahr überschritten, Prognose-Warnung oder alles in Ordnung). Nicht maschinenlesbar. |

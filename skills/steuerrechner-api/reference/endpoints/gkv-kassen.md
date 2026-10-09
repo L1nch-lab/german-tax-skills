@@ -10,4 +10,4 @@ Liefert alle aktiven GKV-Kassen mit IK-Nummer (oder synthetischem Slug-ID), Name
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `kassen` | array<GkvKasseItem> | ja |  |  |  |
+| `kassen` | array<GkvKasseItem> | ja |  |  | Alle aktiven Krankenkassen (aktiv = 1), alphabetisch nach Name sortiert. |

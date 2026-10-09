@@ -56,8 +56,8 @@ Aggregiert Vorabpauschale (§18 InvStG), 3-Topf-Verlustverrechnung (§20 Abs. 6 
 | `differenz_zu_naiv` | string | ja |  |  | Echte Steuer-Summe minus Pauschal-Naiv in EUR. Positiv = du zahlst durch KiSt mehr als der Pauschalansatz suggeriert. |
 | `aktien_topf_aktiv` | boolean | ja |  |  | Status §20 Abs. 6 Satz 4 EStG (False nach BVerfG-Aufhebung) |
 | `bverfg_hinweis` | string | ja |  |  | Hinweis zum §165 AO-Vorlaeufigkeitsvermerk (None wenn nicht relevant) |
-| `bundesland` | string | ja |  |  |  |
-| `kirchenmitglied` | boolean | ja |  |  |  |
-| `veranlagungszeitraum` | integer | ja |  |  |  |
-| `rechtsgrundlage` | string | ja |  |  |  |
-| `hinweise` | array<string> | ja |  |  |  |
+| `bundesland` | string | ja |  |  | Bundesland aus der Anfrage (Default "Nordrhein-Westfalen"). Bestimmt den Kirchensteuersatz (8 % in Bayern und Baden-Württemberg, sonst 9 %). |
+| `kirchenmitglied` | boolean | ja |  |  | Echo des Eingabeflags. Bei true wird die Kapitalertragsteuer mit Kirchensteuer nach der Formel e/(4+k) berechnet. |
+| `veranlagungszeitraum` | integer | ja |  |  | Veranlagungsjahr aus der Anfrage (Default: aktuelles Steuerjahr). Wählt den Basiszins für die Vorabpauschale; fehlt er für das Jahr, antwortet der Endpoint mit 400. |
+| `rechtsgrundlage` | string | ja |  |  | Fester Text mit den Normen, auf denen das Bundle beruht. Hängt nicht von der Eingabe ab. |
+| `hinweise` | array<string> | ja |  |  | Liste erläuternder Texte: Bundle-Herkunft, ggf. Vorabpauschale bzw. Grund für keine, Kirchensteuersatz, Krypto-Freigrenze oder Krypto-Besteuerung nach persönlichem Tarif sowie ggf. BVerfG-Hinweis. |

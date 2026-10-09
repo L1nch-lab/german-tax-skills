@@ -14,7 +14,7 @@ Berechnet die Gesamtsteuerbelastung einer GmbH: Koerperschaftsteuer (15%), Solid
 | `hebesatz` | integer |  |  |  | Gewerbesteuer-Hebesatz (oder ags/plz/gemeinde zur Ermittlung) |
 | `ags` | string |  |  |  | 8-stelliger AGS zur Hebesatz-Ermittlung |
 | `plz` | string |  |  |  | 5-stellige PLZ zur Hebesatz-Ermittlung. Gehoert sie zu mehreren Gemeinden, kommt 409 PLZ_AMBIGUOUS mit den Kandidaten (dann ags senden). |
-| `gemeinde` | string |  |  |  | Gemeindename zur Hebesatz-Suche |
+| `gemeinde` | string |  |  |  | Gemeindename zur Hebesatz-Suche. Zaehlt nur ein eindeutiger Treffer (exakter Name, sonst ein einziger Teiltreffer); sonst 409 GEMEINDE_AMBIGUOUS mit allen Kandidaten (dann ags senden). |
 | `ausschuettung_prozent` | number |  | "100" |  | Anteil des Gewinns nach Steuern, der ausgeschuettet wird (0-100%) |
 | `kirchenmitglied` | boolean |  | false |  | Ob der Gesellschafter kirchensteuerpflichtig ist |
 | `bundesland` | enum |  | "Nordrhein-Westfalen" | Baden-Württemberg, Bayern, Berlin, Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern, Niedersachsen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen | Bundesland des Gesellschafters – bestimmt den KiSt-Satz auf die Ausschuettung (8% Bayern/Baden-Württemberg, 9% uebrige) |

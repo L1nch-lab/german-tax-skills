@@ -22,7 +22,7 @@ Liefert den anzulegenden Wert in Cent/kWh fuer eine PV-Anlage auf Basis von Inbe
 |---|---|---|---|---|---|
 | `verguetung_ct_per_kwh` | string | ja |  |  | Anzulegender Wert in Cent/kWh, gilt fuer 20 Jahre ab Inbetriebnahme |
 | `novelle` | string | ja |  |  | EEG-Novelle, unter der die Anlage gefoerdert wird |
-| `novelle_id` | integer | ja |  |  |  |
+| `novelle_id` | integer | ja |  |  | Interne ID der EEG-Novelle; entspricht dem Feld id in /v1/eeg-novellen. |
 | `inbetriebnahme_von` | string | ja |  |  | Anfang des passenden Inbetriebnahme-Intervalls im BNetzA-Tariff |
 | `inbetriebnahme_bis` | string | ja |  |  | Ende des Inbetriebnahme-Intervalls |
 | `kw_klasse_min` | string | ja |  |  | kWp-Klasse Untergrenze (exklusiv) |

@@ -37,12 +37,12 @@ Beispiel:
 | `austrittsgebuehr` | string | ja |  |  | Einmalige Gebuehr je Bundesland |
 | `break_even_tage` | string | ja |  |  | Tage bis Gebuehr amortisiert |
 | `projektion_10` | string | ja |  |  | Ersparnis ueber 10 Jahre |
-| `projektion_20` | string | ja |  |  |  |
-| `projektion_30` | string | ja |  |  |  |
+| `projektion_20` | string | ja |  |  | Netto-Ersparnis über 20 Jahre in EUR = netto_ersparnis × 20, ohne Einkommensentwicklung, Tarifänderung oder Verzinsung. |
+| `projektion_30` | string | ja |  |  | Netto-Ersparnis über 30 Jahre in EUR = netto_ersparnis × 30, ohne Einkommensentwicklung, Tarifänderung oder Verzinsung. |
 | `est` | integer | ja |  |  | Einkommensteuer auf zvE |
 | `grenzsteuersatz` | string | ja |  |  | Grenzsteuersatz in % |
 | `kist_satz` | string | ja |  |  | 0.08 (BY/BW) oder 0.09 (uebrige) |
-| `bundesland` | string | ja |  |  |  |
-| `steuerjahr` | integer | ja |  |  |  |
+| `bundesland` | string | ja |  |  | Echo des Bundeslands als voller deutscher Name. Bestimmt Kirchensteuersatz (8 % oder 9 %), Austrittsgebühr und kappung_moeglich (nie in Bayern). |
+| `steuerjahr` | integer | ja |  |  | Echo des Steuerjahrs (2024–2026), nach dessen Tarif est und Kirchensteuer berechnet werden. |
 | `kinder` | integer |  | 0 |  | Beruecksichtigte Kinderfreibetraege (§ 51a) |
 | `kappung_moeglich` | boolean |  | false |  | True, wenn eine Kappung der KiSt (2,75-4 % zvE, auf Antrag) greifen koennte |

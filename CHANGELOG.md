@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.4] - 2026-10-09
+
+### Changed
+
+- Endpoint reference regenerated for API version 2026.52. `rente` and `rentenluecke` return the net pension after health and long-term care insurance and income tax instead of a flat 85 %, `rente` computes pension points per § 70 SGB VI (lower pension when `lohnwachstum` > 0), `szenario/jobwechsel` takes `versicherungsmonate`, `altersvorsorgedepot` takes `kinder_vor_2008`, and `krankenkassenbeitrag` accepts `kv_zusatzbeitrag` as an alias. Four response fields carry a new name and the old one is marked deprecated in the reference (`stkl_vergleich_netto`, `mehrkapital_eigenbeitraege_rente`, `ohne_kest`, `preis_mit_regulaerer_ust`).
+
+### Added
+
+- A municipality name that matches several municipalities and none exactly answers with HTTP 409 `GEMEINDE_AMBIGUOUS` and the list of candidates (`gewerbesteuer`, its batch, `koerperschaftsteuer`). `SKILL.md` tells the agent to show the candidates and repeat the call with the chosen AGS; `call.py` names the municipality case in its hint instead of the postal-code text.
+
 ## [0.2.3] - 2026-10-05
 
 ### Changed

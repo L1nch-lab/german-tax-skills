@@ -10,7 +10,7 @@ Liefert Hebesatz-Fakten zur Grundsteuerreform 2025: fuer Schleswig-Holstein die 
 
 | Parameter | Ort | Typ | Pflicht | Beschreibung |
 |---|---|---|---|---|
-| `ags` | path | string | ja | 8-stelliger Amtlicher Gemeindeschluessel oder 5-stellige Postleitzahl. Gehoert die PLZ zu mehreren Gemeinden, kommt 409 mit den Kandidaten. |
+| `ags` | path | string | ja | 8-stelliger Amtlicher Gemeindeschluessel oder 5-stellige Postleitzahl einer Gemeinde in Schleswig-Holstein oder NRW. Gehoert die PLZ zu mehreren Gemeinden, kommt 409 mit den Kandidaten. |
 
 ## Antwort: Felder in `data`
 

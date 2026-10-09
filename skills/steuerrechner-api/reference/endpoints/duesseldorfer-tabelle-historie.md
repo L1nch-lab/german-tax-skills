@@ -17,6 +17,6 @@ Liefert die Historie der Duesseldorfer Tabelle (Kindesunterhalt, OLG Duesseldorf
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
 | `stand` | string | ja |  |  | Abrufdatum der OLG-PDFs (YYYY-MM-DD) |
-| `hinweis` | string |  | "Die Duesseldorfer Tabelle ist eine Leitlinie des OLG Duesseldorf, keine Rechtsnorm – Gerichte koennen im Einzelfall abweichen. Enthalten sind die BEDARFS-Betraege der Tabelle (Seite 1); die Zahlbetraege (nach Abzug des anteiligen Kindergelds) sind NICHT enthalten. 2006, 2012 und 2014 erschien keine neue Tabelle – die jeweils vorherige galt weiter." |  |  |
+| `hinweis` | string |  | "Die Duesseldorfer Tabelle ist eine Leitlinie des OLG Duesseldorf, keine Rechtsnorm – Gerichte koennen im Einzelfall abweichen. Enthalten sind die BEDARFS-Betraege der Tabelle (Seite 1); die Zahlbetraege (nach Abzug des anteiligen Kindergelds) sind NICHT enthalten. 2006, 2012 und 2014 erschien keine neue Tabelle – die jeweils vorherige galt weiter." |  | Fester Hinweistext: Leitlinie des OLG Düsseldorf, keine Rechtsnorm; enthalten sind nur Bedarfsbeträge, keine Zahlbeträge nach Kindergeldabzug. |
 | `jahrgaenge` | array<DuesseldorferJahrgangItem> |  |  |  | Kompakte Jahrgangs-Liste (ohne gueltig_ab-Parameter) |
 | `tabelle` | DuesseldorferTabelleDetail |  |  |  | Volle Bedarfs-Matrix (mit gueltig_ab-Parameter) |

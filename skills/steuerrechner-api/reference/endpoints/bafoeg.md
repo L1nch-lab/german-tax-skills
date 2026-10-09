@@ -42,24 +42,24 @@ Beispiel:
 | `grundbedarf` | string | ja |  |  | §13 Grundbedarf in EUR/Monat |
 | `wohnpauschale` | string | ja |  |  | §13 Wohnpauschale in EUR/Monat |
 | `kvpv_zuschlag` | string | ja |  |  | §13a KV/PV-Zuschlag in EUR/Monat |
-| `gesamtbedarf` | string | ja |  |  |  |
-| `elterneinkommen_netto` | string | ja |  |  |  |
+| `gesamtbedarf` | string | ja |  |  | Monatlicher Bedarf in EUR: grundbedarf + wohnpauschale + kvpv_zuschlag, vor Anrechnung von Einkommen und Vermögen. |
+| `elterneinkommen_netto` | string | ja |  |  | Echo des monatlichen Nettoeinkommens beider Eltern zusammen in EUR. |
 | `elternfreibetrag` | string | ja |  |  | §25 Elternfreibetrag |
-| `anrechenbares_elterneinkommen` | string | ja |  |  |  |
-| `eigenes_einkommen_netto` | string | ja |  |  |  |
+| `anrechenbares_elterneinkommen` | string | ja |  |  | Elterneinkommen, das den Bedarf mindert, in EUR pro Monat: Überschuss über elternfreibetrag, davon bleiben 50 % plus 5 % je weiterem Kind ohne Förderung anrechnungsfrei. |
+| `eigenes_einkommen_netto` | string | ja |  |  | Echo des monatlichen Nettoeinkommens des Antragstellers in EUR. |
 | `eigener_freibetrag` | string | ja |  |  | §23 Eigenfreibetrag |
-| `anrechenbares_eigenes_einkommen` | string | ja |  |  |  |
-| `vermoegen` | string | ja |  |  |  |
+| `anrechenbares_eigenes_einkommen` | string | ja |  |  | Eigenes Einkommen über eigener_freibetrag in EUR pro Monat, nie unter 0; wird voll vom Bedarf abgezogen. |
+| `vermoegen` | string | ja |  |  | Echo des Gesamtvermögens des Antragstellers in EUR (Bestand, kein Monatswert). |
 | `vermoegen_freibetrag` | string | ja |  |  | §29 Vermoegensfreibetrag |
 | `vermoegen_anrechnung_monat` | string | ja |  |  | Anrechenbares Vermoegen / 12 |
 | `rechnerischer_betrag` | string | ja |  |  | Rechnerischer Foerderbetrag vor der Altersgrenze des §10 Abs. 3. Weicht nur ab, wenn ueber_altersgrenze=true – dann zeigt dieses Feld, was bei einem Ausnahmetatbestand (Abs. 3 Satz 2) herauskaeme. |
-| `foerderbetrag_monat` | string | ja |  |  |  |
-| `foerderbetrag_jahr` | string | ja |  |  |  |
-| `has_anspruch` | boolean | ja |  |  |  |
+| `foerderbetrag_monat` | string | ja |  |  | Voraussichtliche Förderung in EUR pro Monat: gesamtbedarf minus angerechnetes Einkommen und Vermögen, nicht unter 0. 0, wenn ueber_altersgrenze true ist (der rechnerische Wert steht dann in rechnerischer_betrag). |
+| `foerderbetrag_jahr` | string | ja |  |  | foerderbetrag_monat × 12 in EUR. |
+| `has_anspruch` | boolean | ja |  |  | True, wenn foerderbetrag_monat größer 0 ist. |
 | `ueber_altersgrenze` | boolean | ja |  |  | True, wenn §10 Abs. 3 Satz 1 greift (45 J. bei Ausbildungsbeginn) |
 | `altersgrenze_ausnahme` | boolean | ja |  |  | Echo: es wurde mit einer Ausnahme nach §10 Abs. 3 Satz 2 gerechnet |
-| `ausbildungstyp` | string | ja |  |  |  |
-| `wohnsituation` | string | ja |  |  |  |
-| `alter` | integer | ja |  |  |  |
+| `ausbildungstyp` | string | ja |  |  | Echo des Ausbildungstyps: "schule" (Abendgymnasium, Kolleg, Berufsfachschule) oder "hochschule"; bestimmt den Grundbedarf. |
+| `wohnsituation` | string | ja |  |  | "bei_eltern" oder "auswaerts", abgeleitet aus der Eingabe bei_eltern; bestimmt die Wohnpauschale. |
+| `alter` | integer | ja |  |  | Echo des Alters des Antragstellers in vollen Jahren; bestimmt den Vermögensfreibetrag (ab 30 höhere Stufe) und ersetzt alter_bei_ausbildungsbeginn, wenn dieses fehlt. |
 | `alter_bei_ausbildungsbeginn` | integer | ja |  |  | Stichtagsalter des §10 Abs. 3 – ohne Angabe gleich `alter` |
-| `hinweise` | array<string> | ja |  |  |  |
+| `hinweise` | array<string> | ja |  |  | Liste von Texthinweisen, z. B. zur Altersgrenze, zu fehlendem Anspruch oder zum erhöhten KV/PV-Zuschlag; enthält immer den Hinweis, dass das BAföG-Amt den Betrag festsetzt. |

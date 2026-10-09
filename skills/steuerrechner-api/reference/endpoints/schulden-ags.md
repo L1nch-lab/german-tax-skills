@@ -19,5 +19,5 @@ Zeitreihe der Schulden des kommunalen Kernhaushalts (GENESIS 71327-Z-01, Stichta
 | `ags` | string | ja |  |  | Angefragte Gemeinde-AGS (8-stellig) |
 | `kreis_ags` | string | ja |  |  | Zugehoeriger Kreis (5-stellig, erste 5 Stellen der AGS) |
 | `kreis_einwohner` | integer |  |  |  | Einwohner des Kreises (Summe der Gemeinden), Basis je-Einwohner |
-| `hinweis` | string |  | "Schulden auf KREIS-Ebene (Kernhaushalt). Die Quelle 71327-Z-01 fuehrt Gemeinde-Schulden ueberwiegend nur ueber Amts-/Kreisverbaende, daher Kreisebene als sauberer Kontext-Layer." |  |  |
-| `eintraege` | array<SchuldenKreisItem> | ja |  |  |  |
+| `hinweis` | string |  | "Schulden auf KREIS-Ebene (Kernhaushalt). Die Quelle 71327-Z-01 fuehrt Gemeinde-Schulden ueberwiegend nur ueber Amts-/Kreisverbaende, daher Kreisebene als sauberer Kontext-Layer." |  | Fester Hinweistext: Die Schulden gelten für den Kreis (Kernhaushalt), weil die Quelle Gemeindeschulden überwiegend nur über Amts- und Kreisverbände führt. |
+| `eintraege` | array<SchuldenKreisItem> | ja |  |  | Schuldenstände des Kreises je Jahr (Stichtag 31.12.), aufsteigend nach jahr. |
