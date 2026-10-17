@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.5] - 2026-10-17
+
+### Added
+
+- Two endpoints, now 122: `riester` computes the subsidy of an existing Riester contract for one contribution year (minimum own contribution from the previous year's income, basic and child allowances, the spouse's allowance, special-expenses deduction with the most-favourable test), and `policenvergleich` compares a gross-premium against a net-premium private pension policy at equal contributions.
+
+### Changed
+
+- Endpoint reference regenerated against the live API (version 2026.52, addendum). `altersvorsorgedepot` takes `zve`, `zusammenveranlagung`, `ehepartner_mittelbar` and `vorjahreseinkommen`, returns `zve_angesetzt` and the spouse's allowance, and compares against a Riester contract that stays under the old law. `minijob` is pension-insured by default with the employee's share and takes `rv_befreit` for the exemption.
+- CI runs the tests on Ubuntu only.
+
 ## [0.2.4] - 2026-10-09
 
 ### Changed

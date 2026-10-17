@@ -11,6 +11,8 @@ Nicht von Hand bearbeiten.
 | Aktivrente | POST | `/v1/aktivrente/batch` | Aktivrente-Batch (max 1.000 Rentner) | [endpoints/aktivrente-batch.md](endpoints/aktivrente-batch.md) |
 | ALG I | POST | `/v1/alg1` | Arbeitslosengeld-I-Rechner | [endpoints/alg1.md](endpoints/alg1.md) |
 | Altersvorsorgedepot | POST | `/v1/altersvorsorgedepot` | Altersvorsorgedepot – Riester-Nachfolger (ab 2027) | [endpoints/altersvorsorgedepot.md](endpoints/altersvorsorgedepot.md) |
+| Altersvorsorgedepot | POST | `/v1/policenvergleich` | Policenvergleich – Bruttopolice gegen Nettopolice | [endpoints/policenvergleich.md](endpoints/policenvergleich.md) |
+| Altersvorsorgedepot | POST | `/v1/riester` | Riester – Mindesteigenbeitrag, Zulagen, Günstigerprüfung | [endpoints/riester.md](endpoints/riester.md) |
 | Arbeitgeber-Kosten | POST | `/v1/arbeitgeber-kosten` | Arbeitgeber-Gesamtkosten-Rechner | [endpoints/arbeitgeber-kosten.md](endpoints/arbeitgeber-kosten.md) |
 | Arbeitgeber-Kosten | POST | `/v1/arbeitgeber-kosten/batch` | Arbeitgeber-Kosten-Batch (max 1.000 Mitarbeiter) | [endpoints/arbeitgeber-kosten-batch.md](endpoints/arbeitgeber-kosten-batch.md) |
 | AT-Krypto | POST | `/v1/at-krypto` | Krypto-KESt Oesterreich (§ 27b EStG AT) | [endpoints/at-krypto.md](endpoints/at-krypto.md) |

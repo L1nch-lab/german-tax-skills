@@ -4,7 +4,7 @@
 
 Kategorie: Minijob
 
-Bestimmt den Beschaeftigungsstatus (Minijob, Midijob oder volle SV-Pflicht) und berechnet den Nettolohn sowie die Sozialversicherungsbeitraege. Beruecksichtigt den Uebergangsbereich (Midijob) von 603-2.000 EUR mit gleitenden Beitraegen (§8, §20 SGB IV). Grenzwerte ab 01.01.2026 (Mindestlohn 13,90 EUR/h).
+Bestimmt den Beschaeftigungsstatus (Minijob, Midijob oder volle SV-Pflicht) und berechnet den Nettolohn sowie die Sozialversicherungsbeitraege. Beruecksichtigt den Uebergangsbereich (Midijob) von 603-2.000 EUR mit gleitenden Beitraegen (§8, §20 SGB IV). Minijob: standardmaessig rentenversichert mit AN-Eigenanteil (§ 168 Abs. 1 Nr. 1b SGB VI); rv_befreit=true fuer die Befreiung nach § 6 Abs. 1b SGB VI. Grenzwerte ab 01.01.2026 (Mindestlohn 13,90 EUR/h).
 
 ## Request-Body (JSON)
 
@@ -13,6 +13,7 @@ Bestimmt den Beschaeftigungsstatus (Minijob, Midijob oder volle SV-Pflicht) und 
 | `bruttogehalt` | number | ja |  |  | Monatliches Bruttogehalt in EUR |
 | `kinderlos_ueber_23` | boolean |  | false |  | True wenn kinderlos und aelter als 23 (PV-Zuschlag) |
 | `bundesland` | enum |  | "Berlin" | Baden-Württemberg, Bayern, Berlin, Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern, Niedersachsen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen | Bundesland (relevant fuer Sachsen-Sonderregel PV) |
+| `rv_befreit` | boolean |  | false |  | Nur Minijob: True, wenn der Beschaeftigte auf Antrag von der Rentenversicherungspflicht befreit ist (§ 6 Abs. 1b SGB VI). Standard False = rentenversichert, AN-Eigenanteil 3,6 % (mind. auf 175 EUR, § 163 Abs. 8 SGB VI). |
 
 Beispiel:
 

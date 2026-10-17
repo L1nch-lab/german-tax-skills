@@ -17,7 +17,7 @@
 
 # german-tax-skills
 
-- 🧮 **120 endpoints**: payroll, income and capital taxes, property, social benefits, reference data
+- 🧮 **122 endpoints**: payroll, income and capital taxes, property, social benefits, reference data
 - 🚫 **No guessing**: the agent never estimates a tax figure, it calls the API or says it can't
 - 🔑 **Key stays local**: read from `.env` or the environment, masked in every output, never asked for in the chat
 - 📉 **Quota-aware**: warns before your RapidAPI plan runs out and stops cleanly when it has
@@ -67,7 +67,7 @@ The answer leads with the numbers: 6,000 € of employer costs mean 4,888.38 €
 
 ## What it covers
 
-120 endpoints, including:
+122 endpoints, including:
 
 - **Payroll:** Brutto-Netto, Netto-Brutto, employer costs, Minijob, Midijob, company car, Christmas bonus, severance pay
 - **Income and capital taxes:** Einkommensteuer, Kapitalertragsteuer, crypto, Vorabpauschale, Progressionsvorbehalt
@@ -163,7 +163,7 @@ The results are calculations based on current German law, not tax advice. Provid
 
 ## Deutsch
 
-Agent-Skill für deutsche Steuern, Sozialabgaben und Sozialleistungen. Claude Code und andere Agenten rechnen damit nicht selbst, sondern fragen die [Steuerrechner-API von rechner-hub.de](https://rechner-hub.de/steuerrechner-api/) ab: 120 Endpoints von Brutto-Netto über Abfindung und Elterngeld bis zu den Hebesätzen deiner Gemeinde.
+Agent-Skill für deutsche Steuern, Sozialabgaben und Sozialleistungen. Claude Code und andere Agenten rechnen damit nicht selbst, sondern fragen die [Steuerrechner-API von rechner-hub.de](https://rechner-hub.de/steuerrechner-api/) ab: 122 Endpoints von Brutto-Netto über Abfindung und Elterngeld bis zu den Hebesätzen deiner Gemeinde.
 
 - **Installieren:** `/plugin marketplace add L1nch-lab/german-tax-skills`, dann `/plugin install german-tax-skills@l1nch-lab`
 - **Key:** [German Tax Calculator auf RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) abonnieren (Basic mit 50 Anfragen am Tag ist kostenlos) und `RAPIDAPI_KEY=...` in die `.env` im Projektordner schreiben
