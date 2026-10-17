@@ -22,7 +22,7 @@
 - 🔑 **Key stays local**: read from `.env` or the environment, masked in every output, never asked for in the chat
 - 📉 **Quota-aware**: warns before your RapidAPI plan runs out and stops cleanly when it has
 - 🪶 **Zero dependencies**: Python standard library only
-- 🐍 **Python 3.10 – 3.14**: tested on Linux, Windows and macOS
+- 🐍 **Python 3.10 – 3.14**: tested on Linux, pure Python with no platform-specific code
 
 > 🇩🇪 **Deutsch:** weiter unten gibt es eine [Kurzfassung auf Deutsch](#deutsch).
 
