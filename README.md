@@ -85,17 +85,17 @@ The full list is in [`skills/steuerrechner-api/reference/INDEX.md`](skills/steue
 
 ## Install
 
+**Any agent that reads the Agent Skills format** (Claude Code, Cursor, Codex and others):
+
+```bash
+npx skills add L1nch-lab/german-tax-skills
+```
+
 **Claude Code plugin:**
 
 ```text
 /plugin marketplace add L1nch-lab/german-tax-skills
 /plugin install german-tax-skills@l1nch-lab
-```
-
-**Any agent that reads the Agent Skills format** (Claude Code, Cursor, Codex and others):
-
-```bash
-npx skills add L1nch-lab/german-tax-skills
 ```
 
 **By hand:** copy `skills/steuerrechner-api/` to `~/.claude/skills/`.
@@ -165,7 +165,7 @@ The results are calculations based on current German law, not tax advice. Provid
 
 Agent-Skill für deutsche Steuern, Sozialabgaben und Sozialleistungen. Claude Code und andere Agenten rechnen damit nicht selbst, sondern fragen die [Steuerrechner-API von rechner-hub.de](https://rechner-hub.de/steuerrechner-api/) ab: 122 Endpoints von Brutto-Netto über Abfindung und Elterngeld bis zu den Hebesätzen deiner Gemeinde.
 
-- **Installieren:** `/plugin marketplace add L1nch-lab/german-tax-skills`, dann `/plugin install german-tax-skills@l1nch-lab`
+- **Installieren:** `npx skills add L1nch-lab/german-tax-skills` (Claude Code, Cursor, Codex). Als Claude-Code-Plugin: `/plugin marketplace add L1nch-lab/german-tax-skills`, dann `/plugin install german-tax-skills@l1nch-lab`
 - **Key:** [German Tax Calculator auf RapidAPI](https://rapidapi.com/rechnerhub/api/german-tax-calculator) abonnieren (Basic mit 50 Anfragen am Tag ist kostenlos) und `RAPIDAPI_KEY=...` in die `.env` im Projektordner schreiben
 - **Ohne Key im Browser rechnen:** [rechner-hub.de](https://rechner-hub.de/)
 
