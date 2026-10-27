@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.6] - 2026-10-27
+
+### Changed
+
+- Endpoint reference regenerated against the live API (version 2026.52). `fruehstartrente` now cites the FrühStRG as passed by the Bundestag on 16.10.2026 (BT-Drs. 21/7864, 21/8606) instead of the ministry draft; the Bundesrat's consent is still pending.
+
+### Fixed
+
+- `tools/build_reference.py` labels decimal fields as `number` again. Since pydantic 2.14 the API schema drops the pattern on the string branch of decimal fields, and the generator only folded that branch away when the pattern was present, so 70 endpoint files would have shown `number | string`.
+
 ## [0.2.5] - 2026-10-17
 
 ### Added

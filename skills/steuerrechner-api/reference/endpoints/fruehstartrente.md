@@ -1,19 +1,19 @@
-# Frühstart-Rente – Kinderdepot (Referentenentwurf FrühStRG)
+# Frühstart-Rente – Kinderdepot (FrühStRG, Bundestagsbeschluss 16.10.2026)
 
 `POST /v1/fruehstartrente`
 
 Kategorie: Fruehstartrente
 
-Berechnet die Kapitalprojektion der Frühstartrente (staatlich 10 EUR/Monat, § 2 Abs. 1 FrühStRG-E) und optional den Aufbau ueber 18 hinaus mit Eigen-beitraegen (Eltern bis 18, Kind ab 18) bis Renteneintritt. Grundlage ist der BMF-Referentenentwurf vom 21.07.2026 – Modellrechnung, kein geltendes Recht. Der Anspruch haengt am Geburtsjahrgang: erster berechtigter Jahrgang ist 2020, danach kommt jaehrlich der Jahrgang der Sechsjaehrigen dazu (§ 30 Abs. 1 S. 2). Fruehere Jahrgaenge erhalten 0 EUR, koennen aber einen Vertrag schliessen (§ 3 Abs. 4). Einzahlungen daneben sind auf 6.840 EUR je Kalenderjahr begrenzt (§ 3 Abs. 3) und werden sonst gekappt. Liefert Kapitalstock bei 18 und bei Renteneintritt, monatliche Auszahlung fuer 25-J-Annuitaet, Vorteil mit Eltern-Beitrag vs nur Staat, Wachstumsfaktor.
+Berechnet die Kapitalprojektion der Frühstartrente (staatlich 10 EUR/Monat, § 2 Abs. 1 FrühStRG) und optional den Aufbau ueber 18 hinaus mit Eigen-beitraegen (Eltern bis 18, Kind ab 18) bis Renteneintritt. Grundlage ist die vom Bundestag am 16.10.2026 beschlossene Fassung (BT-Drs. 21/7864, 21/8606), Zustimmung des Bundesrats steht aus – Modellrechnung. Der Anspruch haengt am Geburtsjahrgang: erster berechtigter Jahrgang ist 2020, danach kommt jaehrlich der Jahrgang der Sechsjaehrigen dazu (§ 30 Abs. 1 S. 2). Fruehere Jahrgaenge erhalten 0 EUR, koennen aber einen Vertrag schliessen (§ 3 Abs. 4). Einzahlungen daneben sind auf 6.840 EUR je Kalenderjahr begrenzt (§ 3 Abs. 3) und werden sonst gekappt. Liefert Kapitalstock bei 18 und bei Renteneintritt, monatliche Auszahlung fuer 25-J-Annuitaet, Vorteil mit Eltern-Beitrag vs nur Staat, Wachstumsfaktor.
 
 ## Request-Body (JSON)
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `geburtsjahr` | integer |  |  |  | Geburtsjahr des Kindes. Anspruch auf die staatliche Zahlung besteht erst ab Jahrgang 2020 (§ 30 Abs. 1 S. 2 FrühStRG-E); frühere Jahrgänge können einen Vertrag schließen, erhalten aber 0 EUR. |
+| `geburtsjahr` | integer |  |  |  | Geburtsjahr des Kindes. Anspruch auf die staatliche Zahlung besteht erst ab Jahrgang 2020 (§ 30 Abs. 1 S. 2 FrühStRG); frühere Jahrgänge können einen Vertrag schließen, erhalten aber 0 EUR. |
 | `alter_kind` | integer |  |  |  | Abgelöst durch geburtsjahr. Wird nur ausgewertet, wenn geburtsjahr fehlt, und dann als Bezugsjahr minus Alter interpretiert. |
-| `eigenbeitrag_eltern_monat` | number |  | "0" |  | Eltern-Eigenbeitrag pro Monat bis 18. § 3 Abs. 3 FrühStRG-E deckelt Einzahlungen neben der Förderung auf 6.840 EUR im Kalenderjahr (570 EUR/Monat); höhere Werte werden gekappt und im Feld eigenbeitrag_gekappt ausgewiesen. |
-| `eigenbeitrag_ab_18_monat` | number |  | "0" |  | Kind-Eigenbeitrag ab 18 bis Renteneintritt. Ebenfalls auf 570 EUR/Monat gekappt (§ 3 Abs. 3 FrühStRG-E). |
+| `eigenbeitrag_eltern_monat` | number |  | "0" |  | Eltern-Eigenbeitrag pro Monat bis 18. § 3 Abs. 3 FrühStRG deckelt Einzahlungen neben der Förderung auf 6.840 EUR im Kalenderjahr (570 EUR/Monat); höhere Werte werden gekappt und im Feld eigenbeitrag_gekappt ausgewiesen. |
+| `eigenbeitrag_ab_18_monat` | number |  | "0" |  | Kind-Eigenbeitrag ab 18 bis Renteneintritt. Ebenfalls auf 570 EUR/Monat gekappt (§ 3 Abs. 3 FrühStRG). |
 | `renteneintritt` | integer |  | 67 |  | Renteneintrittsalter |
 | `rendite_prozent` | number |  | "6.0" |  | Jaehrl. Renditeannahme in % |
 
@@ -29,18 +29,18 @@ Beispiel:
 
 | Feld | Typ | Pflicht | Default | Werte | Beschreibung |
 |---|---|---|---|---|---|
-| `geburtsjahr` | integer | ja |  |  | Geburtsjahr des Kindes; fehlt es in der Eingabe, wird es als Bezugsjahr minus alter_kind abgeleitet. Ab Jahrgang 2020 besteht Anspruch auf die staatliche Zahlung (Modellrechnung nach Referentenentwurf FrühStRG-E). |
+| `geburtsjahr` | integer | ja |  |  | Geburtsjahr des Kindes; fehlt es in der Eingabe, wird es als Bezugsjahr minus alter_kind abgeleitet. Ab Jahrgang 2020 besteht Anspruch auf die staatliche Zahlung (Modellrechnung nach dem vom Bundestag beschlossenen FrühStRG). |
 | `alter_kind` | integer | ja |  |  | Alter des Kindes in Jahren als bezugsjahr minus geburtsjahr, ohne Geburtstag im Jahr. Bestimmt nur, wie lange Eltern bis 18 noch einzahlen können. |
 | `bezugsjahr` | integer | ja |  |  | Kalenderjahr, gegen das das Alter gerechnet wurde |
 | `eigenbeitrag_eltern_monat` | string | ja |  |  | Monatlicher Eltern- bzw. Drittbeitrag bis zum 18. Lebensjahr in EUR, nach Kappung auf eigenbeitrag_max_monat. |
 | `eigenbeitrag_ab_18_monat` | string | ja |  |  | Monatlicher Eigenbeitrag des Kindes ab 18 bis zum Renteneintritt in EUR, nach Kappung auf eigenbeitrag_max_monat. |
 | `renteneintritt` | integer | ja |  |  | Renteneintrittsalter in Jahren aus der Eingabe (Standard 67); Ende der Wachstumsphase und Beginn der Auszahlung. |
 | `rendite_prozent` | string | ja |  |  | Angenommene Rendite in Prozent p. a. (6.0 = 6 %). Wird als Jahressatz / 12 monatlich verzinst und gilt für Spar-, Wachstums- und Auszahlphase gleichermaßen. |
-| `foerderberechtigt` | boolean | ja |  |  | Anspruch auf die staatliche Zahlung (§ 30 Abs. 1 S. 2 FrühStRG-E) |
+| `foerderberechtigt` | boolean | ja |  |  | Anspruch auf die staatliche Zahlung (§ 30 Abs. 1 S. 2 FrühStRG) |
 | `foerder_start_jahrgang` | integer | ja |  |  | Erster anspruchsberechtigter Geburtsjahrgang |
 | `eigenbeitrag_gekappt` | boolean | ja |  |  | Eingabe lag über 570 EUR/Monat und wurde auf § 3 Abs. 3 gekappt |
-| `eigenbeitrag_max_monat` | string | ja |  |  | Monatliche Obergrenze für Eigenbeiträge in EUR (570), abgeleitet aus 6.840 EUR je Kalenderjahr nach § 3 Abs. 3 FrühStRG-E. |
-| `eigenbeitrag_max_jahr` | string | ja |  |  | Obergrenze für Einzahlungen neben der Förderung, § 3 Abs. 3 FrühStRG-E |
+| `eigenbeitrag_max_monat` | string | ja |  |  | Monatliche Obergrenze für Eigenbeiträge in EUR (570), abgeleitet aus 6.840 EUR je Kalenderjahr nach § 3 Abs. 3 FrühStRG. |
+| `eigenbeitrag_max_jahr` | string | ja |  |  | Obergrenze für Einzahlungen neben der Förderung, § 3 Abs. 3 FrühStRG |
 | `monate_staat` | integer | ja |  |  | Monate mit staatlicher Zahlung, 0 ohne Anspruch |
 | `monate_eltern` | integer | ja |  |  | Monate, in denen Eigenbeiträge bis 18 möglich sind |
 | `monate_wachstumsphase` | integer | ja |  |  | Monate vom 18. Lebensjahr bis zum Renteneintritt: (renteneintritt − 18) × 12. In dieser Phase gibt es keinen Staatsbeitrag mehr. |

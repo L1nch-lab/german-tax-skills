@@ -37,7 +37,7 @@ Nicht von Hand bearbeiten.
 | Firmenwagen | POST | `/v1/firmenwagen` | Firmenwagen / Geldwerter Vorteil / Dienstwagen-Rechner | [endpoints/firmenwagen.md](endpoints/firmenwagen.md) |
 | Firmenwagen | POST | `/v1/firmenwagen/batch` | Firmenwagen-Batch (max 200 Fahrzeuge) | [endpoints/firmenwagen-batch.md](endpoints/firmenwagen-batch.md) |
 | Freelancer | POST | `/v1/freelancer` | Freelancer-Stundensatz-Rechner (§ 18 / § 15 EStG) | [endpoints/freelancer.md](endpoints/freelancer.md) |
-| Fruehstartrente | POST | `/v1/fruehstartrente` | Frühstart-Rente – Kinderdepot (Referentenentwurf FrühStRG) | [endpoints/fruehstartrente.md](endpoints/fruehstartrente.md) |
+| Fruehstartrente | POST | `/v1/fruehstartrente` | Frühstart-Rente – Kinderdepot (FrühStRG, Bundestagsbeschluss 16.10.2026) | [endpoints/fruehstartrente.md](endpoints/fruehstartrente.md) |
 | Gemeinde-Daten | GET | `/v1/einkommen/{ags}` | Einkommen je Gemeinde (Gesamtbetrag der Einkuenfte) | [endpoints/einkommen-ags.md](endpoints/einkommen-ags.md) |
 | Gemeinde-Daten | GET | `/v1/mietstufe/{ags}` | Wohngeld-Mietenstufe einer Gemeinde | [endpoints/mietstufe-ags.md](endpoints/mietstufe-ags.md) |
 | Gemeinde-Daten | GET | `/v1/schulden/{ags}` | Kommunale Schulden (Kreisebene) zu einer Gemeinde | [endpoints/schulden-ags.md](endpoints/schulden-ags.md) |

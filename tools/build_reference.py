@@ -50,8 +50,9 @@ def type_label(schema: dict) -> str:
             if v.get("type") == "null":
                 continue
             # Dezimalzahlen erlaubt die API auch als String, das ist ein Detail der
-            # Eingabe-Toleranz, kein eigener Typ.
-            if v.get("type") == "string" and "pattern" in v and labels == ["number"]:
+            # Eingabe-Toleranz, kein eigener Typ. Seit pydantic 2.14 fehlt am
+            # String-Zweig das Pattern, deshalb nicht mehr darauf pruefen.
+            if v.get("type") == "string" and labels == ["number"]:
                 continue
             labels.append(type_label(v))
         return " | ".join(dict.fromkeys(labels)) or "any"
