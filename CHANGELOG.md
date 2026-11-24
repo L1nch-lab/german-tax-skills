@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.7] - 2026-11-24
+
+### Changed
+
+- Endpoint reference regenerated against API version 2026.54. `mutterschaftsgeld` now counts the day of birth (99 or 127 days instead of 98 or 126, § 24i Abs. 3 SGB V). `kirchensteuer-austritt` describes `kappung_moeglich` with each state's lowest documented cap (3 % in Berlin, Brandenburg, Hamburg, Mecklenburg-Vorpommern and Schleswig-Holstein, 3.5 % elsewhere, none in Bavaria) instead of a flat 2.75 %.
+
 ## [0.2.6] - 2026-10-27
 
 ### Changed

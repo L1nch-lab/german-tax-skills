@@ -45,4 +45,4 @@ Beispiel:
 | `bundesland` | string | ja |  |  | Echo des Bundeslands als voller deutscher Name. Bestimmt Kirchensteuersatz (8 % oder 9 %), Austrittsgebühr und kappung_moeglich (nie in Bayern). |
 | `steuerjahr` | integer | ja |  |  | Echo des Steuerjahrs (2024–2026), nach dessen Tarif est und Kirchensteuer berechnet werden. |
 | `kinder` | integer |  | 0 |  | Beruecksichtigte Kinderfreibetraege (§ 51a) |
-| `kappung_moeglich` | boolean |  | false |  | True, wenn eine Kappung der KiSt (2,75-4 % zvE, auf Antrag) greifen koennte |
+| `kappung_moeglich` | boolean |  | false |  | True, wenn die Kirchensteuer den niedrigsten belegten Kappungssatz des Landes uebersteigt (3 % BE/BB/HH/MV/SH, 3,5 % uebrige, Bayern keine; im Westen nur auf Antrag). Die Kappung ist nicht eingerechnet. |
